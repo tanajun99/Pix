@@ -20,6 +20,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".EditMembersActivity"
+            android:label="@string/title_activity_edit_members" >
+        </activity>
+        <activity
+            android:name=".LogInActivity"
+            android:label="@string/title_activity_log_in" >
+        </activity>
+        <activity
+            android:name=".MessageRecipientActivity"
+            android:label="@string/title_activity_message_recipient" >
+        </activity>
+        <activity
+            android:name=".SignUpActivity"
+            android:label="@string/title_activity_sign_up" >
+        </activity>
+        <activity
+            android:name=".ViewerPhotoActivity"
+            android:label="@string/title_activity_viewer_photo" >
+        </activity>
     </application>
-
 </manifest>
