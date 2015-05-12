@@ -12,7 +12,7 @@
     <string name="username_hint">Username</string>
     <string name="password_hint">Password</string>
     <string name="login_button_label">Login</string>
-    <string name="sign_up_text">Sign Up!</string>
+    <string name="sign_up_text">Don\'t have an account? Sign Up!</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
     <string name="email_hint">Email</string>
     <string name="sign_up_button_label">Sign Up</string>
@@ -55,4 +55,6 @@
     <string name="title_activity_edit_members">EditMemberActivity</string>
     <string name="title_activity_main_activity2">MainActivity2Activity</string>
     <string name="title_section3">Section 3</string>
+    <string name="title">Pix</string>
+    <string name="subtitle">Useful Messaging Service</string>
 </resources>

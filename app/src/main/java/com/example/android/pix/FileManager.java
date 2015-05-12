@@ -15,7 +15,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.util.Log;
 
-import org.apache.commons.io.IOUtils;
+//import org.apache.commons.io.IOUtils;
 
 public class FileManager {
 
@@ -57,7 +57,7 @@ public class FileManager {
             try {
                 File file = new File(uri.getPath());
                 FileInputStream fileInput = new FileInputStream(file);
-                fileBytes = IOUtils.toByteArray(fileInput);
+                //fileBytes = IOUtils.toByteArray(fileInput);
             }
             catch (IOException e) {
                 Log.e(TAG, e.getMessage());

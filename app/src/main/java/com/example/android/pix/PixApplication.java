@@ -7,9 +7,6 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
-/**
- * Created by tanakajunnari on 5/10/15.
- */
 public class PixApplication extends Application {
     @Override
     public void onCreate() {
