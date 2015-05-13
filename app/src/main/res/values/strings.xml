@@ -61,4 +61,5 @@
     <string name="content_desc_message_icon">Message Icon</string>
     <string name="content_desc_user_icon">user_icon</string>
     <string name="content_desc_user_checkmark">User Checkmark</string>
+    <string name="push_message">You have a new Pix message from</string>
 </resources>
