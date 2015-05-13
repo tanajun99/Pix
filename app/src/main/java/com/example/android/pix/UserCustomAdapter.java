@@ -9,9 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.parse.ParseUser;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -33,15 +35,28 @@ public class UserCustomAdapter extends ArrayAdapter<ParseUser> {
         if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.user_item, null);
             holder = new ViewHolder();
-            //holder.iconImageView = (ImageView)convertView.findViewById(R.id.messageIcon);
-            holder.nameLabel = (TextView)convertView.findViewById(R.id.nameLabel);
+            holder.userImageView = (ImageView) convertView.findViewById(R.id.user_image_view);
+            holder.nameLabel = (TextView) convertView.findViewById(R.id.nameLabel);
             convertView.setTag(holder);
-        }
-        else {
-            holder = (ViewHolder)convertView.getTag();
+        } else {
+            holder = (ViewHolder) convertView.getTag();
         }
 
         ParseUser user = mUsers.get(position);
+        String email = user.getEmail().toLowerCase();
+
+        if (email.equals("")) {
+            holder.userImageView.setImageResource(R.mipmap.ic_person_grey600_48dp);
+        } else{
+            String hash = MD5Utils.md5Hex(email);
+            String gravatalUrl = "http://www.gravatar.com/avatar/" + hash + "?s=204&d=404";
+            Picasso.with(mContext)
+                    .load(gravatalUrl)
+                    .placeholder(R.mipmap.ic_person_grey600_48dp)
+                    .into(holder.userImageView);
+        }
+
+
 
     //    if (user.getString(ParseConstants.KEY_FILE_TYPE).equals(ParseConstants.TYPE_IMAGE)) {
       //      holder.iconImageView.setImageResource(R.mipmap.ic_action_picture);
@@ -55,7 +70,7 @@ public class UserCustomAdapter extends ArrayAdapter<ParseUser> {
     }
 
     private static class ViewHolder {
-        //ImageView iconImageView;
+        ImageView userImageView;
         TextView nameLabel;
     }
 
