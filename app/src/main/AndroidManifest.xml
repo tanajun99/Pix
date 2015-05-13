@@ -9,16 +9,16 @@
         android:name="android.hardware.Camera"
         android:required="true" />
 
-
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
+    <permission
+        android:name="com.example.android.pix.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
 
-    <permission android:protectionLevel="signature"
-                android:name="com.example.android.pix.permission.C2D_MESSAGE" />
     <uses-permission android:name="com.example.android.pix.permission.C2D_MESSAGE" />
 
     <application
@@ -51,29 +51,32 @@
         <activity
             android:name=".SignUpActivity"
             android:label="@string/title_activity_sign_up" >
-
         </activity>
         <activity
             android:name=".ViewerPhotoActivity"
             android:label="@string/title_activity_viewer_photo" >
         </activity>
+
         <service android:name="com.parse.PushService" />
-        <receiver android:name="com.parse.ParseBroadcastReceiver">
+
+        <receiver android:name="com.parse.ParseBroadcastReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.USER_PRESENT" />
             </intent-filter>
         </receiver>
-        <receiver android:name="com.parse.ParsePushBroadcastReceiver"
-                  android:exported="false">
+        <receiver
+            android:name="com.parse.ParsePushBroadcastReceiver"
+            android:exported="false" >
             <intent-filter>
                 <action android:name="com.parse.push.intent.RECEIVE" />
                 <action android:name="com.parse.push.intent.DELETE" />
                 <action android:name="com.parse.push.intent.OPEN" />
             </intent-filter>
         </receiver>
-        <receiver android:name="com.parse.GcmBroadcastReceiver"
-                  android:permission="com.google.android.c2dm.permission.SEND">
+        <receiver
+            android:name="com.parse.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
@@ -81,5 +84,11 @@
                 <category android:name="com.parse.starter" />
             </intent-filter>
         </receiver>
+
+        <activity
+            android:name=".TimeLineActivity"
+            android:label="@string/title_activity_time_line" >
+        </activity>
     </application>
+
 </manifest>

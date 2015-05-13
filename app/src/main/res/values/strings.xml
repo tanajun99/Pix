@@ -62,4 +62,10 @@
     <string name="content_desc_user_icon">user_icon</string>
     <string name="content_desc_user_checkmark">User Checkmark</string>
     <string name="push_message">You have a new Pix message from</string>
+    <string name="title_activity_time_line">TimeLineActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
 </resources>
