@@ -36,9 +36,9 @@ public class ViewerPhotoActivity extends Activity {
         }, 10*1000);
     }
 
-    /**
-     * Set up the {@link android.app.ActionBar}.
-     */
+
+
+
     private void setupActionBar() {
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
