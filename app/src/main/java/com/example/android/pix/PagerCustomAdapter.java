@@ -35,7 +35,7 @@ public class PagerCustomAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     @Override
@@ -46,16 +46,20 @@ public class PagerCustomAdapter extends FragmentPagerAdapter {
                 return mContext.getString(R.string.title_section1).toUpperCase(l);
             case 1:
                 return mContext.getString(R.string.title_section2).toUpperCase(l);
+            case 2:
+                return mContext.getString(R.string.title_section3).toUpperCase(l);
         }
         return null;
     }
 
     public int getIcon(int position){
         switch (position){
-            case 0:
+            case 2:
                 return R.mipmap.ic_inbox_white_24dp;
             case 1:
                 return R.mipmap.ic_people_outline_white_24dp;
+            case 0:
+                return R.mipmap.ic_launcher;
         }
         return R.mipmap.ic_people_outline_grey600_24dp;
     }

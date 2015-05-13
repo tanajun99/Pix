@@ -187,10 +187,12 @@ public class MainActivity extends FragmentActivity {
 
         LayoutInflater inflater = LayoutInflater.from(this);
         for (int i = 0; i < mPagerCustomAdapter.getCount(); i++) {
+            TextView tv = (TextView) inflater.inflate(R.layout.tab_widget, tabWidget, false);
+            tv.setText(mPagerCustomAdapter.getPageTitle(i));
 
             tabHost.addTab(tabHost
                     .newTabSpec(String.valueOf(i))
-                    .setIndicator("",getDrawable(mPagerCustomAdapter.getIcon(i)))
+                    .setIndicator(tv)
                     .setContent(android.R.id.tabcontent));
         }
 
