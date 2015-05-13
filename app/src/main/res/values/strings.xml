@@ -58,4 +58,5 @@
     <string name="title">Pix</string>
     <string name="subtitle">Useful Messaging Service</string>
     <string name="sign_up_buuton_cancel">CANCEL</string>
+    <string name="content_desc_message_icon">Message Icon</string>
 </resources>

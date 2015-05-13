@@ -22,9 +22,6 @@ public class PagerCustomAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        // getItem is called to instantiate the fragment for the given page.
-        // Return a DummySectionFragment (defined as a static inner class
-        // below) with the page number as its lone argument.
 
         switch(position) {
             case 0:
@@ -51,5 +48,15 @@ public class PagerCustomAdapter extends FragmentPagerAdapter {
                 return mContext.getString(R.string.title_section2).toUpperCase(l);
         }
         return null;
+    }
+
+    public int getIcon(int position){
+        switch (position){
+            case 0:
+                return R.mipmap.ic_inbox_white_24dp;
+            case 1:
+                return R.mipmap.ic_people_outline_white_24dp;
+        }
+        return R.mipmap.ic_people_outline_grey600_24dp;
     }
 }

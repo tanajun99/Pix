@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="light_gray">#bbbbbb</color>
+    <color name="Refresh1">#3F51B5</color>
+    <color name="Refresh2">#5677fc</color>
+    <color name="Refresh3">#738ffe</color>
+    <color name="Refresh4">#91a7ff</color>
+
 </resources>

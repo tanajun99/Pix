@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TabWidget;
@@ -186,12 +187,10 @@ public class MainActivity extends FragmentActivity {
 
         LayoutInflater inflater = LayoutInflater.from(this);
         for (int i = 0; i < mPagerCustomAdapter.getCount(); i++) {
-            TextView tv = (TextView) inflater.inflate(R.layout.tab_widget, tabWidget, false);
-            tv.setText(mPagerCustomAdapter.getPageTitle(i));
 
             tabHost.addTab(tabHost
                     .newTabSpec(String.valueOf(i))
-                    .setIndicator(tv)
+                    .setIndicator("",getDrawable(mPagerCustomAdapter.getIcon(i)))
                     .setContent(android.R.id.tabcontent));
         }
 
