@@ -2,7 +2,7 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/bg_gradient"
+                android:background="@drawable/background"
                 tools:context="com.example.android.pix.LogInActivity">
 
     <TextView
@@ -75,6 +75,11 @@
         android:text="@string/login_button_label"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/editTextLayout"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:background="#00BCD4"
+        android:textColor="@android:color/white"
+
         />
 
     <TextView
