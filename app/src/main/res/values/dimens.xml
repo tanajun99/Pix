@@ -7,5 +7,9 @@
     <dimen name="login_horizontal_padding">10dp</dimen>
     <dimen name="login_vertital_padding">10dp</dimen>
     <dimen name="login_vertical_padding">10dp</dimen>
+    <dimen name="signup_vertical_margin">32dp</dimen>
+    <dimen name="signup_horizontal_padding">10dp</dimen>
+    <dimen name="signup_vertital_padding">10dp</dimen>
+    <dimen name="signup_vertical_padding">10dp</dimen>
 
 </resources>
