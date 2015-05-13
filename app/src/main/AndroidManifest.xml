@@ -16,7 +16,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
-    
+
     <permission android:protectionLevel="signature"
                 android:name="com.example.android.pix.permission.C2D_MESSAGE" />
     <uses-permission android:name="com.example.android.pix.permission.C2D_MESSAGE" />
@@ -77,10 +77,7 @@
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-
-                <!--
-                  IMPORTANT: Change "com.parse.starter" to match your app's package name.
-                -->
+                
                 <category android:name="com.parse.starter" />
             </intent-filter>
         </receiver>
