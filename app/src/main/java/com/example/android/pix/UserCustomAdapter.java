@@ -1,9 +1,5 @@
 package com.example.android.pix;
 
-/**
- * Created by tanakajunnari on 5/9/15.
- */
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
