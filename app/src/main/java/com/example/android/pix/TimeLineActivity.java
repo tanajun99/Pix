@@ -35,7 +35,7 @@ public class TimeLineActivity extends BaseActivity implements FeedAdapter.OnFeed
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_time_line);
         setupFeed();
 
         if (savedInstanceState == null) {

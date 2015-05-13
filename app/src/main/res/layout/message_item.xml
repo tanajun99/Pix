@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="@dimen/inbox_horizontal_margin"
+    android:layout_marginLeft="@dimen/inbox_horizontal_margin"
+    android:layout_marginTop="@dimen/inbox_vertical_margin"
+    android:paddingRight="@dimen/message_vertical_padding"
+    android:paddingLeft="@dimen/message_vertical_padding"
+    android:background="@android:color/white">
+
+    <ImageView
+        android:id="@+id/messageIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:src="@drawable/ic_action_picture"
+        android:contentDescription="@string/content_desc_message_icon"/>
+
+    <TextView
+        android:id="@+id/senderLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/messageIcon"
+        android:layout_alignParentLeft="true"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:paddingLeft="@dimen/message_vertical_padding"
+        android:paddingTop="@dimen/message_vertical_padding"
+        android:text="Test Text"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/timeLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/senderLabel"
+        android:layout_toLeftOf="@+id/messageIcon"
+        android:paddingLeft="@dimen/message_vertical_padding"
+        android:textColor="@color/light_gray"
+        android:paddingBottom="@dimen/message_vertical_padding"
+        />
+
+</RelativeLayout>
+</LinearLayout>

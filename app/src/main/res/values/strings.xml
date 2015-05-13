@@ -62,4 +62,9 @@
     <string name="content_desc_user_icon">user_icon</string>
     <string name="content_desc_user_checkmark">User Checkmark</string>
     <string name="push_message">You have a new Pix message from</string>
+    <string name="time_line_activity">TimeLineActivity</string>
+    <plurals name="likes_count">
+        <item quantity="one">%d like</item>
+        <item quantity="other">%d likes</item>
+    </plurals>
 </resources>
