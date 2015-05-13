@@ -80,16 +80,38 @@
 
    </LinearLayout>
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextLayout"
+        android:id="@+id/button_Divider"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/button_divider"/>
+
     <Button
         android:id="@+id/signupButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editTextLayout"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="0dp"
         android:text="@string/sign_up_button_label"
         android:background="#00BCD4"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/white"
+        android:layout_toStartOf="@+id/cancel_buttom"
+        android:layout_toLeftOf="@id/button_Divider"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cancel_buttom"
+        android:text="@string/sign_up_buuton_cancel"
+        android:layout_below="@id/editTextLayout"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="0dp"
+        android:layout_alignStart="@+id/button_Divider"
+        android:background="#00BCD4"
+        android:textColor="@android:color/white"
+        android:layout_toRightOf="@id/button_Divider"/>
 
 </RelativeLayout>
