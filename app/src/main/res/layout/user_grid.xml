@@ -18,7 +18,7 @@
         android:horizontalSpacing="@dimen/user_grid_spacing"
         android:verticalSpacing="@dimen/user_grid_spacing"
         android:gravity="center"
-        android:layout_enterHorizontal="true">
+        android:layout_centerHorizontal="true">
 
     </GridView>
 

@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -18,8 +17,6 @@ import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
-
-import org.w3c.dom.Text;
 
 public class MembersFragment extends Fragment {
 
@@ -33,7 +30,7 @@ public class MembersFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_members,
+        View rootView = inflater.inflate(R.layout.user_grid,
                 container, false);
 
         mGridView = (GridView)rootView.findViewById(R.id.friendsGrid);

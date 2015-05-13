@@ -7,16 +7,28 @@
     >
 
     <ImageView
+        android:id="@+id/user_image_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/user_image_view"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:src="@mipmap/ic_person_grey600_48dp"
-        android:contentDescription="@string/content_desc_user_icon"
         android:scaleType="fitXY"
         android:adjustViewBounds="true"
+        android:src="@mipmap/ic_person_grey600_48dp"
+        android:contentDescription="@string/content_desc_user_icon"
         />
+
+    <ImageView
+        android:id="@+id/user_image_checkmark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:src="@mipmap/ic_check_box_grey600_48dp"
+        android:contentDescription="@string/content_desc_user_checkmark"
+        android:visibility="invisible"/>
 
     <TextView
         android:layout_width="wrap_content"

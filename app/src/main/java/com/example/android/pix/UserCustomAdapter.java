@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -37,6 +38,7 @@ public class UserCustomAdapter extends ArrayAdapter<ParseUser> {
             holder = new ViewHolder();
             holder.userImageView = (ImageView) convertView.findViewById(R.id.user_image_view);
             holder.nameLabel = (TextView) convertView.findViewById(R.id.nameLabel);
+            holder.checkmarkImageView = (ImageView)convertView.findViewById(R.id.user_image_checkmark);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -55,22 +57,23 @@ public class UserCustomAdapter extends ArrayAdapter<ParseUser> {
                     .placeholder(R.mipmap.ic_person_grey600_48dp)
                     .into(holder.userImageView);
         }
-
-
-
-    //    if (user.getString(ParseConstants.KEY_FILE_TYPE).equals(ParseConstants.TYPE_IMAGE)) {
-      //      holder.iconImageView.setImageResource(R.mipmap.ic_action_picture);
-        //}
-        //else {
-          //  holder.iconImageView.setImageResource(R.mipmap.ic_action_play_over_video);
-        //}
         holder.nameLabel.setText(user.getUsername());
+
+        GridView gridView = (GridView)parent;
+        if(gridView.isItemChecked(position)){
+            holder.checkmarkImageView.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            holder.checkmarkImageView.setVisibility(View.INVISIBLE);
+        }
 
         return convertView;
     }
 
     private static class ViewHolder {
         ImageView userImageView;
+        ImageView checkmarkImageView;
         TextView nameLabel;
     }
 
