@@ -59,4 +59,5 @@
     <string name="subtitle">Useful Messaging Service</string>
     <string name="sign_up_buuton_cancel">CANCEL</string>
     <string name="content_desc_message_icon">Message Icon</string>
+    <string name="content_desc_user_icon">user_icon</string>
 </resources>

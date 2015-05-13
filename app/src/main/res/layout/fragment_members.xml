@@ -4,13 +4,19 @@
              android:layout_height="match_parent"
              tools:context="com.example.android.pix.MembersFragment">
 
-    <ListView
-        android:id="@android:id/list"
+    <GridView
+        android:id="@+id/friendsGrid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" >
-    </ListView>
+        android:layout_alignParentTop="true"
+        android:numColumns="3"
+        android:padding="8dp"
+        android:clipToPadding="false"
+        android:horizontalSpacing="@dimen/user_grid_spacing"
+        android:verticalSpacing="@dimen/user_grid_spacing">
+
+    </GridView>
 
     <TextView
         android:id="@android:id/empty"
