@@ -5,9 +5,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Locale;
 
+import android.app.ActivityOptions;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.transition.Explode;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -205,6 +207,9 @@ public class MainActivity extends FragmentActivity {
             }
         });
     }
+
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
