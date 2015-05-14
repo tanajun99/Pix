@@ -1,4 +1,4 @@
-package com.example.android.pix;
+package com.example.android.pix.Adapter;
 
 /**
  * Created by tanakajunnari on 5/9/15.
@@ -15,6 +15,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.android.pix.ParseConstants;
+import com.example.android.pix.R;
 import com.parse.ParseObject;
 
 public class MessageCustomAdapter extends ArrayAdapter<ParseObject> {

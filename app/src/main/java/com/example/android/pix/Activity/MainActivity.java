@@ -1,4 +1,4 @@
-package com.example.android.pix;
+package com.example.android.pix.Activity;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -12,11 +12,10 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TabWidget;
-import android.widget.TextView;
+
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -31,6 +30,9 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.android.pix.Adapter.PagerCustomAdapter;
+import com.example.android.pix.ParseConstants;
+import com.example.android.pix.R;
 import com.parse.ParseUser;
 
 public class MainActivity extends FragmentActivity {
@@ -190,7 +192,7 @@ public class MainActivity extends FragmentActivity {
 
             tabHost.addTab(tabHost
                     .newTabSpec(String.valueOf(i))
-                    .setIndicator("",getDrawable(mPagerCustomAdapter.getIcon(i)))
+                    .setIndicator(mPagerCustomAdapter.getPageTitle(i))
                     .setContent(android.R.id.tabcontent));
         }
 

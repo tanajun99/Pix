@@ -1,4 +1,4 @@
-package com.example.android.pix;
+package com.example.android.pix.Fragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
+import com.example.android.pix.Activity.ViewerPhotoActivity;
+import com.example.android.pix.Adapter.MessageCustomAdapter;
+import com.example.android.pix.ParseConstants;
+import com.example.android.pix.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;

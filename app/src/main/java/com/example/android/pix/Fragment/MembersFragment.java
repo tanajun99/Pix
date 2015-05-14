@@ -1,4 +1,4 @@
-package com.example.android.pix;
+package com.example.android.pix.Fragment;
 
 import java.util.List;
 
@@ -12,6 +12,9 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.TextView;
 
+import com.example.android.pix.ParseConstants;
+import com.example.android.pix.R;
+import com.example.android.pix.Adapter.UserCustomAdapter;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;

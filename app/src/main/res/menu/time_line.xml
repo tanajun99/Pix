@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:tools="http://schemas.android.com/tools"
-      tools:context="com.example.android.pix.TimeLineActivity">
+      tools:context="com.example.android.pix.Activity.TimeLineActivity">
     <item android:id="@+id/action_example"
           android:title="@string/action_example"
           android:showAsAction="withText|ifRoom"/>

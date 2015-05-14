@@ -1,4 +1,4 @@
-package com.example.android.pix;
+package com.example.android.pix.Adapter;
 
 import java.util.Locale;
 
@@ -6,6 +6,10 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.example.android.pix.Fragment.InboxFragment;
+import com.example.android.pix.Fragment.MembersFragment;
+import com.example.android.pix.R;
 
 /**
  * A {@link FragmentPagerAdapter} that returns a fragment corresponding to

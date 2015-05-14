@@ -19,6 +19,10 @@
         android:name="com.example.android.pix.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="22" />
+
     <uses-permission android:name="com.example.android.pix.permission.C2D_MESSAGE" />
 
     <application
@@ -28,15 +32,15 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.MainActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".EditMembersActivity"
+            android:name=".Activity.EditMembersActivity"
             android:label="@string/title_activity_edit_members" >
         </activity>
         <activity
-            android:name=".LogInActivity"
+            android:name=".Activity.LogInActivity"
             android:label="@string/title_activity_log_in" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,15 +49,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MessageRecipientActivity"
+            android:name=".Activity.MessageRecipientActivity"
             android:label="@string/title_activity_message_recipient" >
         </activity>
         <activity
-            android:name=".SignUpActivity"
+            android:name=".Activity.SignUpActivity"
             android:label="@string/title_activity_sign_up" >
         </activity>
         <activity
-            android:name=".ViewerPhotoActivity"
+            android:name=".Activity.ViewerPhotoActivity"
             android:label="@string/title_activity_viewer_photo" >
         </activity>
 
@@ -86,7 +90,7 @@
         </receiver>
 
         <activity
-            android:name=".TimeLineActivity"
+            android:name=".Activity.TimeLineActivity"
             android:label="@string/title_activity_time_line" >
         </activity>
     </application>

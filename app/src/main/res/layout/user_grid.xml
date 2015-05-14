@@ -2,7 +2,7 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context="com.example.android.pix.MembersFragment">
+             tools:context="com.example.android.pix.Fragment.MembersFragment">
 
     <GridView
         android:id="@+id/friendsGrid"
