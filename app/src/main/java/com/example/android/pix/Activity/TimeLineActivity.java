@@ -3,17 +3,12 @@ package com.example.android.pix.Activity;
 import android.app.Activity;
 
 import android.app.ActionBar;
-import android.app.ActivityOptions;
 import android.app.FragmentManager;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.transition.Explode;
-import android.view.Menu;
-import android.view.MenuItem;
+
 import android.support.v4.widget.DrawerLayout;
-import android.view.View;
 
 import com.example.android.pix.CardAdapter;
 import com.example.android.pix.Fragment.NavigationDrawerFragment;
@@ -78,11 +73,4 @@ public class TimeLineActivity extends Activity
                 break;
         }
     }
-
-    public void restoreActionBar() {
-        ActionBar actionBar = getActionBar();
-        actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle(mTitle);
-    }
-
 }

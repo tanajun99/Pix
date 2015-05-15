@@ -23,39 +23,36 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         super();
         mItems = new ArrayList<NatureItem>();
         NatureItem nature = new NatureItem();
-        nature.setName("The Great Barrier Reef");
-        nature.setDes("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt" +
-                      "ut labore et dolore magna aliqua. Ut enim ad minim veniam.");
-        nature.setThumbnail(R.drawable.great_barrier_reef);
+        nature.setName("Stanford Memorial Church");
+        nature.setDes("Stanford Memorial Church stands at the center of the campus, and is the University’s architectural crown jewel. It was one of the earliest, and is still among the most prominent, interdenominational churches in the West. "
+                );
+        nature.setThumbnail(R.drawable.ch);
         mItems.add(nature);
 
         nature = new NatureItem();
-        nature.setName("Grand Canyon");
-        nature.setDes("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt" +
-                "ut labore et dolore magna aliqua.");
-        nature.setThumbnail(R.drawable.grand_canyon);
+        nature.setName("Oakland Bay Bridge");
+        nature.setDes("The San Francisco–Oakland Bay Bridge (known locally as the Bay Bridge) is a complex of bridges spanning San Francisco Bay in California. ");
+        nature.setThumbnail(R.drawable.br);
         mItems.add(nature);
 
         nature = new NatureItem();
-        nature.setName("Baltoro Glacier");
-        nature.setDes("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt" +
-                "ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.");
-        nature.setThumbnail(R.drawable.baltoro_glacier);
+        nature.setName("Cool Android Developer!");
+        nature.setDes("Android runs on hundreds of millions of handheld devices around the world" +
+                "and it now supports these exciting, new form-factors.");
+        nature.setThumbnail(R.drawable.android);
         mItems.add(nature);
 
         nature = new NatureItem();
-        nature.setName("Iguazu Falls");
-        nature.setDes("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt" +
-                "ut labore et dolore magna aliqua. Ut enim ad minim veniam.");
-        nature.setThumbnail(R.drawable.ig);
+        nature.setName("Stanford Memorial Night");
+        nature.setDes("Stanford Memorial Church (also referred to informally as MemChu)[1] is located on the Main Quad at the center of the Stanford University campus in Stanford, California, United States.");
+        nature.setThumbnail(R.drawable.chn);
         mItems.add(nature);
 
 
         nature = new NatureItem();
-        nature.setName("Aurora Borealis");
-        nature.setDes("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt" +
-                      "ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.");
-        nature.setThumbnail(R.drawable.aurora_borealis);
+        nature.setName("Santa Cruz Beach");
+        nature.setDes("Whether you enjoy surfing, playing beach volleyball, or hiking along the coastal bluffs, our beaches offer something for everyone. ");
+        nature.setThumbnail(R.drawable.sc);
         mItems.add(nature);
     }
 
