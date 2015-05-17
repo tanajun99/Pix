@@ -9,6 +9,7 @@ import android.app.ActivityOptions;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.RecyclerView;
 import android.transition.Explode;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -33,6 +34,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.android.pix.Adapter.PagerCustomAdapter;
+import com.example.android.pix.Fragment.NavigationDrawerFragment;
 import com.example.android.pix.ParseConstants;
 import com.example.android.pix.R;
 import com.parse.ParseUser;
@@ -44,6 +46,12 @@ public class MainActivity extends FragmentActivity {
     View indicator;
     TabWidget tabWidget;
     PagerCustomAdapter mPagerCustomAdapter;
+
+    private NavigationDrawerFragment mNavigationDrawerFragment;
+    RecyclerView mRecyclerView;
+    RecyclerView.LayoutManager mLayoutManager;
+    RecyclerView.Adapter mAdapter;
+
 
     public static final String TAG = MainActivity.class.getSimpleName();
 

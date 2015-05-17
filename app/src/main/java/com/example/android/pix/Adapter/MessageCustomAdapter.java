@@ -1,7 +1,7 @@
 package com.example.android.pix.Adapter;
 
 /**
- * Created by tanakajunnari on 5/9/15.
+ * PicShot
  */
 import java.util.Date;
 import java.util.List;

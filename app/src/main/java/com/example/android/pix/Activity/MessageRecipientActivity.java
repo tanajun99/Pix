@@ -52,7 +52,6 @@ public class MessageRecipientActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.user_grid);
-        // Show the Up button in the action bar.
         setupActionBar();
 
         mGridView = (GridView)findViewById(R.id.friendsGrid);
