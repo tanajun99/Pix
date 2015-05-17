@@ -1,4 +1,4 @@
-package com.example.android.pix;
+package com.example.android.pix.Adapter;
 
     import android.support.v7.widget.RecyclerView;
     import android.view.LayoutInflater;
@@ -6,6 +6,9 @@ package com.example.android.pix;
     import android.view.ViewGroup;
     import android.widget.ImageView;
     import android.widget.TextView;
+
+    import com.example.android.pix.NatureItem;
+    import com.example.android.pix.R;
 
     import java.util.ArrayList;
     import java.util.List;
