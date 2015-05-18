@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.example.android.pix.Activity.MainActivity;
 import com.example.android.pix.Activity.TimeLineActivity;
 import com.example.android.pix.Activity.ViewerPhotoActivity;
 import com.example.android.pix.Adapter.MessageCustomAdapter;
@@ -48,7 +49,7 @@ public class PlaceholderFragment extends ListFragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        ((TimeLineActivity) activity).onSectionAttached(
+        ((MainActivity) activity).onSectionAttached(
                 getArguments().getInt(ARG_SECTION_NUMBER));
     }
 

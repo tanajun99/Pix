@@ -6,9 +6,11 @@ import java.io.InputStream;
 import java.util.Locale;
 
 import android.app.ActivityOptions;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.RecyclerView;
 import android.transition.Explode;
 import android.view.LayoutInflater;
@@ -35,11 +37,12 @@ import android.widget.Toast;
 
 import com.example.android.pix.Adapter.PagerCustomAdapter;
 import com.example.android.pix.Fragment.NavigationDrawerFragment;
+import com.example.android.pix.Fragment.PlaceholderFragment;
 import com.example.android.pix.ParseConstants;
 import com.example.android.pix.R;
 import com.parse.ParseUser;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks  {
 
 
     ViewPager mViewPager;
@@ -51,6 +54,8 @@ public class MainActivity extends FragmentActivity {
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
     RecyclerView.Adapter mAdapter;
+    private CharSequence mTitle;
+
 
 
     public static final String TAG = MainActivity.class.getSimpleName();
@@ -214,6 +219,15 @@ public class MainActivity extends FragmentActivity {
                 mViewPager.setCurrentItem(Integer.valueOf(tabId));
             }
         });
+
+        mNavigationDrawerFragment = (NavigationDrawerFragment)
+                getFragmentManager().findFragmentById(R.id.navigation_drawer);
+        mTitle = getTitle();
+
+        // Set up the drawer.
+        mNavigationDrawerFragment.setUp(
+                R.id.navigation_drawer,
+                (DrawerLayout) findViewById(R.id.drawer_layout));
     }
 
 
@@ -324,6 +338,28 @@ public class MainActivity extends FragmentActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+    }
+
+    @Override
+    public void onNavigationDrawerItemSelected(int position) {
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                .commit();
+    }
+
+    public void onSectionAttached(int number) {
+        switch (number) {
+            case 1:
+                mTitle = getString(R.string.title_section1);
+                break;
+            case 2:
+                mTitle = getString(R.string.title_section2);
+                break;
+            case 3:
+                mTitle = getString(R.string.title_section3);
+                break;
+        }
     }
 
     private class PageChangeListener implements ViewPager.OnPageChangeListener {

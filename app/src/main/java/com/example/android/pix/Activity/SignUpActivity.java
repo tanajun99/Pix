@@ -16,6 +16,12 @@ import android.widget.Toast;
 
 import com.example.android.pix.PixApplication;
 import com.example.android.pix.R;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
@@ -39,16 +45,18 @@ public class SignUpActivity extends Activity {
     protected EditText mEmail;
     protected Button mSignUpButton;
     protected Button mCancelButton;
-    LoginButton mFaceBook;
+    //LoginButton mFaceBook;
     Dialog progressDialog;
     TwitterLoginButton mTwitter;
-
+    //CallbackManager callbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_sign_up);
+        //FacebookSdk.sdkInitialize(getApplicationContext());
+        //callbackManager = CallbackManager.Factory.create();
 
         ActionBar actionBar = getActionBar();
         actionBar.hide();
@@ -121,14 +129,6 @@ public class SignUpActivity extends Activity {
                 }
             }
         });
-        mFaceBook = (LoginButton)findViewById(R.id.facebook_login);
-        mFaceBook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onFacebookLoginButtonClicked();
-            }
-        });
-
         mTwitter = (TwitterLoginButton)findViewById(R.id.twitter_login);
         mTwitter.setCallback(new Callback<TwitterSession>() {
             @Override
@@ -138,11 +138,44 @@ public class SignUpActivity extends Activity {
 
             @Override
             public void failure(TwitterException e) {
-
+                Toast.makeText(SignUpActivity.this, "Error!", Toast.LENGTH_LONG).show();
             }
         });
 
-
+//        mFaceBook = (LoginButton)findViewById(R.id.facebook_login);
+//        mFaceBook.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+//            @Override
+//            public void onSuccess(LoginResult loginResult) {
+//                onFacebookLoginButtonClicked();
+//            }
+//
+//            @Override
+//            public void onCancel() {
+//                Toast.makeText(SignUpActivity.this, "Error!", Toast.LENGTH_LONG).show();
+//            }
+//
+//            @Override
+//            public void onError(FacebookException e) {
+//                Toast.makeText(SignUpActivity.this, "Error!", Toast.LENGTH_LONG).show();
+//            }
+//        });
+//
+//        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+//                    @Override
+//                    public void onSuccess(LoginResult loginResult) {
+//                        // App code
+//                    }
+//
+//                    @Override
+//                    public void onCancel() {
+//                        // App code
+//                    }
+//
+//                    @Override
+//                    public void onError(FacebookException exception) {
+//                        // App code
+//                    }
+//                });
     }
 
     private void onTwitterLoginButtonClicked() {
@@ -156,23 +189,6 @@ public class SignUpActivity extends Activity {
                     showMainActivity();
                 } else {
                     Log.d("MyApp", "User logged in through Twitter!");
-                }
-            }
-        });
-    }
-
-    private void onFacebookLoginButtonClicked() {
-        SignUpActivity.this.progressDialog = ProgressDialog.show(
-                SignUpActivity.this, "", "Logging in...", true);
-        List<String> permissions = Arrays.asList("public_profile", "user_about_me", "user_friends");
-        ParseFacebookUtils.logInWithReadPermissionsInBackground(this, permissions, new LogInCallback() {
-            @Override
-            public void done(ParseUser user, ParseException err) {
-                SignUpActivity.this.progressDialog.dismiss();
-                if(user==null){
-                    Toast.makeText(SignUpActivity.this,"Error!",Toast.LENGTH_LONG).show();
-                }
-                else {
                     showMainActivity();
                 }
             }
@@ -182,9 +198,9 @@ public class SignUpActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);
-        mTwitter.onActivityResult(requestCode, resultCode,
-                data);
+        //ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);
+        mTwitter.onActivityResult(requestCode, resultCode, data);
+        //callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
     private void showMainActivity() {
@@ -192,4 +208,22 @@ public class SignUpActivity extends Activity {
         startActivity(intent);
         finish();
     }
+
+//    private void onFacebookLoginButtonClicked() {
+//        SignUpActivity.this.progressDialog = ProgressDialog.show(
+//                SignUpActivity.this, "", "Logging in...", true);
+//        List<String> permissions = Arrays.asList("public_profile", "user_about_me", "user_friends");
+//        ParseFacebookUtils.logInWithReadPermissionsInBackground(this, permissions, new LogInCallback() {
+//            @Override
+//            public void done(ParseUser user, ParseException err) {
+//                SignUpActivity.this.progressDialog.dismiss();
+//                if(user==null){
+//                    Toast.makeText(SignUpActivity.this,"Error!",Toast.LENGTH_LONG).show();
+//                }
+//                else {
+//                    showMainActivity();
+//                }
+//            }
+//        });
+//    }
 }
