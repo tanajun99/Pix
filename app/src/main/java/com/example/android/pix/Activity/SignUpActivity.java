@@ -3,18 +3,34 @@ package com.example.android.pix.Activity;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.android.pix.PixApplication;
 import com.example.android.pix.R;
+import com.facebook.login.widget.LoginButton;
+import com.parse.LogInCallback;
 import com.parse.ParseException;
+import com.parse.ParseFacebookUtils;
+import com.parse.ParseTwitterUtils;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
+import com.twitter.sdk.android.core.Callback;
+import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.TwitterException;
+import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.core.identity.TwitterLoginButton;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class SignUpActivity extends Activity {
 
@@ -23,6 +39,10 @@ public class SignUpActivity extends Activity {
     protected EditText mEmail;
     protected Button mSignUpButton;
     protected Button mCancelButton;
+    LoginButton mFaceBook;
+    Dialog progressDialog;
+    TwitterLoginButton mTwitter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,5 +121,75 @@ public class SignUpActivity extends Activity {
                 }
             }
         });
+        mFaceBook = (LoginButton)findViewById(R.id.facebook_login);
+        mFaceBook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onFacebookLoginButtonClicked();
+            }
+        });
+
+        mTwitter = (TwitterLoginButton)findViewById(R.id.twitter_login);
+        mTwitter.setCallback(new Callback<TwitterSession>() {
+            @Override
+            public void success(Result<TwitterSession> result) {
+                onTwitterLoginButtonClicked();
+            }
+
+            @Override
+            public void failure(TwitterException e) {
+
+            }
+        });
+
+
+    }
+
+    private void onTwitterLoginButtonClicked() {
+        ParseTwitterUtils.logIn(this, new LogInCallback() {
+            @Override
+            public void done(ParseUser user, ParseException err) {
+                if (user == null) {
+                    Log.d("MyApp", "Uh oh. The user cancelled the Twitter login.");
+                } else if (user.isNew()) {
+                    Log.d("MyApp", "User signed up and logged in through Twitter!");
+                    showMainActivity();
+                } else {
+                    Log.d("MyApp", "User logged in through Twitter!");
+                }
+            }
+        });
+    }
+
+    private void onFacebookLoginButtonClicked() {
+        SignUpActivity.this.progressDialog = ProgressDialog.show(
+                SignUpActivity.this, "", "Logging in...", true);
+        List<String> permissions = Arrays.asList("public_profile", "user_about_me", "user_friends");
+        ParseFacebookUtils.logInWithReadPermissionsInBackground(this, permissions, new LogInCallback() {
+            @Override
+            public void done(ParseUser user, ParseException err) {
+                SignUpActivity.this.progressDialog.dismiss();
+                if(user==null){
+                    Toast.makeText(SignUpActivity.this,"Error!",Toast.LENGTH_LONG).show();
+                }
+                else {
+                    showMainActivity();
+                }
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);
+        mTwitter.onActivityResult(requestCode, resultCode,
+                data);
+    }
+
+    private void showMainActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

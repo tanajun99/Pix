@@ -17,35 +17,33 @@
         android:textColor="@android:color/white"
         android:textStyle="bold"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="59dp"/>
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/subtitle"
         android:id="@+id/sub_title"
-        android:layout_below="@+id/title"
-        android:layout_centerHorizontal="true"
         android:textSize="13sp"
         android:textColor="@android:color/white"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_below="@+id/title"
+        android:layout_centerHorizontal="true"/>
 
     <LinearLayout
         android:id="@+id/editTextLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_below="@+id/sub_title"
-        android:layout_marginTop="@dimen/signup_vertical_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:paddingLeft="@dimen/signup_horizontal_padding"
         android:paddingRight="@dimen/signup_horizontal_padding"
         android:paddingTop="@dimen/signup_vertical_padding"
         android:paddingBottom="@dimen/signup_vertical_padding"
         android:background="@android:color/white"
-        >
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="39dp">
 
     <EditText
         android:id="@+id/usernameField"
@@ -93,13 +91,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editTextLayout"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="0dp"
         android:text="@string/sign_up_button_label"
         android:background="#00BCD4"
         android:textColor="@android:color/white"
-        android:layout_toStartOf="@+id/cancel_buttom"
-        android:layout_toLeftOf="@id/button_Divider"/>
+        android:layout_toLeftOf="@id/button_Divider"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
     <Button
         android:layout_width="match_parent"
@@ -107,11 +105,50 @@
         android:id="@+id/cancel_buttom"
         android:text="@string/sign_up_buuton_cancel"
         android:layout_below="@id/editTextLayout"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="0dp"
-        android:layout_alignStart="@+id/button_Divider"
         android:background="#00BCD4"
         android:textColor="@android:color/white"
-        android:layout_toRightOf="@id/button_Divider"/>
+        android:layout_toRightOf="@id/button_Divider"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign up by email or Log in with SNS!"
+        android:id="@+id/textView2"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/sub_title"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-------- OR --------"
+        android:id="@+id/textView3"
+        android:layout_marginTop="33dp"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/button_Divider"
+        android:layout_alignRight="@+id/title"
+        android:layout_alignEnd="@+id/title"/>
+
+    <com.facebook.login.widget.LoginButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="33dp"
+        android:layout_alignRight="@+id/cancel_buttom"
+        android:layout_alignEnd="@+id/cancel_buttom"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/facebook_login"/>
+
+    <com.twitter.sdk.android.core.identity.TwitterLoginButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/facebook_login"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2"
+        android:id="@+id/twitter_login"/>
 
 </RelativeLayout>

@@ -2,6 +2,7 @@ package com.example.android.pix;
 
 import android.app.Application;
 
+import com.crashlytics.android.Crashlytics;
 import com.facebook.FacebookSdk;
 import com.parse.Parse;
 import com.parse.ParseFacebookUtils;
@@ -22,7 +23,7 @@ public class PixApplication extends Application {
     public void onCreate() {
         super.onCreate();
         TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
-        Fabric.with(this, new Twitter(authConfig));
+        Fabric.with(this, new Twitter(authConfig), new Crashlytics());
         Parse.initialize(this, "McMcH2r1mHPLVayThixzxqiVQUesUOUYIoDLXVIp", "5T8YLuCG3uU8p98BteGHRnysKT0Z2Hd1NlTPRhsa");
         ParseInstallation.getCurrentInstallation().saveInBackground();
         ParseTwitterUtils.initialize("j2GdKjcnqaIGlSwf8FYTUnMLM", "DruaY9IZWepkWZt8s7quFH9twwFE7Nzpuq8txzwHEYw9NMyUhU");
