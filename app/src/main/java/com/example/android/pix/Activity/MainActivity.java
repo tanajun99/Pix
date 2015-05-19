@@ -6,16 +6,10 @@ import java.io.InputStream;
 import java.util.Locale;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.TabHost;
 import android.widget.TabWidget;
 
 import java.io.File;
@@ -31,21 +25,21 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.ViewGroup;
 
-import com.example.android.pix.Adapter.PagerCustomAdapter;
 
-import com.example.android.pix.Fragment.RecyclerViewFragment;
+import com.example.android.pix.Fragment.ListViewFragment;
+import com.example.android.pix.Fragment.InboxRecyclerViewFragment;
+import com.example.android.pix.Fragment.MembersFragment;
+import com.example.android.pix.Fragment.ProfileRecyclerViewFragment;
 import com.example.android.pix.Fragment.ScrollFragment;
+import com.example.android.pix.Fragment.TimeLineRecyclerViewFragment;
 import com.example.android.pix.ParseConstants;
 import com.example.android.pix.R;
 import com.github.florent37.materialviewpager.MaterialViewPager;
@@ -56,7 +50,6 @@ public class MainActivity extends ActionBarActivity {
 
     View indicator;
     TabWidget tabWidget;
-    PagerCustomAdapter mPagerCustomAdapter;
 
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
@@ -198,7 +191,7 @@ public class MainActivity extends ActionBarActivity {
         mViewPager = (MaterialViewPager) findViewById(R.id.materialViewPager);
 
         toolbar = mViewPager.getToolbar();
-        mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        //mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -206,15 +199,15 @@ public class MainActivity extends ActionBarActivity {
             final ActionBar actionBar = getSupportActionBar();
             if (actionBar != null) {
                 actionBar.setDisplayHomeAsUpEnabled(true);
-                actionBar.setDisplayShowHomeEnabled(true);
+                actionBar.setDisplayShowHomeEnabled(false);
                 actionBar.setDisplayShowTitleEnabled(true);
-                actionBar.setDisplayUseLogoEnabled(false);
-                actionBar.setHomeButtonEnabled(true);
+                actionBar.setDisplayUseLogoEnabled(true);
+                actionBar.setHomeButtonEnabled(false);
             }
         }
 
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawer, 0, 0);
-        mDrawer.setDrawerListener(mDrawerToggle);
+//        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawer, 0, 0);
+//        mDrawer.setDrawerListener(mDrawerToggle);
 
         mViewPager.getViewPager().setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
 
@@ -223,16 +216,16 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public Fragment getItem(int position) {
                 switch (position) {
-                    //case 0:
-                    //    return RecyclerViewFragment.newInstance();
+                    case 0:
+                        return InboxRecyclerViewFragment.newInstance();
                     case 1:
+                        return TimeLineRecyclerViewFragment.newInstance();
+                    case 2:
                         return ScrollFragment.newInstance();
-                    //case 2:
-                    //    return ListViewFragment.newInstance();
-                    //case 3:
-                    //    return WebViewFragment.newInstance();
+                    case 3:
+                        return ProfileRecyclerViewFragment.newInstance();
                     default:
-                        return RecyclerViewFragment.newInstance();
+                        return TimeLineRecyclerViewFragment.newInstance();
                 }
             }
 
@@ -267,8 +260,8 @@ public class MainActivity extends ActionBarActivity {
                 }
 
                 final int fadeDuration = 400;
-                mViewPager.setImageUrl(imageUrl,fadeDuration);
-                mViewPager.setColor(color,fadeDuration);
+                //mViewPager.setImageUrl(imageUrl,fadeDuration);
+                //mViewPager.setColor(color,fadeDuration);
 
             }
 
@@ -281,13 +274,13 @@ public class MainActivity extends ActionBarActivity {
             public CharSequence getPageTitle(int position) {
                 switch (position){
                     case 0:
-                        return "Selection";
+                        return "INBOX";
                     case 1:
-                        return "Actualités";
+                        return "TIMELINE";
                     case 2:
-                        return "Professionnel";
+                        return "FRIENDS";
                     case 3:
-                        return "Divertissement";
+                        return "PROFILE";
                 }
                 return "";
             }
@@ -297,11 +290,7 @@ public class MainActivity extends ActionBarActivity {
 
         mViewPager.getViewPager().setCurrentItem(1);
 
-
     }
-
-
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

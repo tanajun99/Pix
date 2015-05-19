@@ -3,11 +3,16 @@ package com.example.android.pix.Activity;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,11 +24,13 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.example.android.pix.FileManager;
 import com.example.android.pix.ParseConstants;
 import com.example.android.pix.R;
 import com.example.android.pix.Adapter.UserCustomAdapter;
+import com.github.florent37.materialviewpager.MaterialViewPager;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -46,13 +53,25 @@ public class MessageRecipientActivity extends Activity {
     protected Uri mMediaUri;
     protected String mFileType;
     GridView mGridView;
+    private ViewPager mViewPager;
+    private DrawerLayout mDrawer;
+    private ActionBarDrawerToggle mDrawerToggle;
+    private Toolbar toolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+        //requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.user_grid);
-        setupActionBar();
+
+//        mViewPager = (MaterialViewPager) findViewById(R.id.materialViewPager);
+//
+//
+        Toolbar toolbar = (Toolbar) findViewById(R.id.myawesometoolbar);
+        setActionBar(toolbar);
+
+
 
         mGridView = (GridView)findViewById(R.id.friendsGrid);
         mGridView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
@@ -109,11 +128,6 @@ public class MessageRecipientActivity extends Activity {
         });
     }
 
-    private void setupActionBar() {
-
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

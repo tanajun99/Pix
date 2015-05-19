@@ -14,6 +14,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.example.android.pix.ParseConstants;
 import com.example.android.pix.R;
@@ -41,7 +42,11 @@ public class EditMembersActivity extends Activity {
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.user_grid);
         // Show the Up button in the action bar.
-        setupActionBar();
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.myawesometoolbar);
+        setActionBar(toolbar);
+
+
 
         mGridView = (GridView)findViewById(R.id.friendsGrid);
         mGridView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);

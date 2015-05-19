@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.android.pix.Adapter.TestRecyclerViewAdapter;
+import com.example.android.pix.Adapter.CardAdapter;
 import com.example.android.pix.R;
 import com.github.florent37.materialviewpager.MaterialViewPagerHelper;
 import com.github.florent37.materialviewpager.adapter.RecyclerViewMaterialAdapter;
@@ -18,15 +18,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class RecyclerViewFragment extends Fragment {
+public class TimeLineRecyclerViewFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
 
     private List<Object> mContentItems = new ArrayList<>();
 
-    public static RecyclerViewFragment newInstance() {
-        return new RecyclerViewFragment();
+    public static TimeLineRecyclerViewFragment newInstance() {
+        return new TimeLineRecyclerViewFragment();
     }
 
     @Override
@@ -45,7 +45,7 @@ public class RecyclerViewFragment extends Fragment {
         for (int i = 0; i < 100; ++i)
             mContentItems.add(new Object());
 
-        mAdapter = new RecyclerViewMaterialAdapter(new TestRecyclerViewAdapter(mContentItems));
+        mAdapter = new RecyclerViewMaterialAdapter(new CardAdapter());
         mRecyclerView.setAdapter(mAdapter);
 
         MaterialViewPagerHelper.registerRecyclerView(getActivity(), mRecyclerView, null);

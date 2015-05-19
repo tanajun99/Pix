@@ -47,7 +47,7 @@ public class WebViewFragment extends Fragment {
             }
         });
 
-        mWebView.loadUrl("http://mobile.francetvinfo.fr/");
+        mWebView.loadUrl("http://www.worldweatheronline.com/");
 
         MaterialViewPagerHelper.registerWebView(getActivity(), mWebView, null);
     }

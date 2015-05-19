@@ -44,6 +44,10 @@ public class MembersFragment extends Fragment {
         return rootView;
     }
 
+    public static MembersFragment newInstance() {
+        return new MembersFragment();
+    }
+
     @Override
     public void onResume() {
         super.onResume();

@@ -4,10 +4,20 @@
              android:layout_height="match_parent"
              tools:context="com.example.android.pix.Fragment.MembersFragment">
 
+    <android.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:id="@+id/myawesometoolbar">
+
+    </android.widget.Toolbar>
+
+
+
     <GridView
         android:id="@+id/friendsGrid"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="343dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:numColumns="auto_fit"
@@ -18,7 +28,8 @@
         android:horizontalSpacing="@dimen/user_grid_spacing"
         android:verticalSpacing="@dimen/user_grid_spacing"
         android:gravity="center"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal|bottom">
 
     </GridView>
 
@@ -26,7 +37,8 @@
         android:id="@android:id/empty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/empty_friends_label" />
+        android:text="@string/empty_friends_label"
+        android:layout_gravity="center"/>
 
 
 </FrameLayout>

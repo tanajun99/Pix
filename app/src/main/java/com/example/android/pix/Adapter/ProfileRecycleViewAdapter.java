@@ -9,15 +9,14 @@ import com.example.android.pix.R;
 
 import java.util.List;
 
-
-public class TestRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class ProfileRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     List<Object> contents;
 
     static final int TYPE_HEADER = 0;
     static final int TYPE_CELL = 1;
 
-    public TestRecyclerViewAdapter(List<Object> contents) {
+    public ProfileRecycleViewAdapter(List<Object> contents) {
         this.contents = contents;
     }
 
