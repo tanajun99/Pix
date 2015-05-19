@@ -54,4 +54,7 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.2.4@aar') {
         transitive = true;
     }
+    compile ('com.github.florent37:materialviewpager:1.0.3.3@aar'){
+        transitive = true
+    }
 }

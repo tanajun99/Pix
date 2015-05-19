@@ -99,10 +99,6 @@
             </intent-filter>
         </receiver>
 
-        <activity
-            android:name=".Activity.TimeLineActivity"
-            android:label="@string/title_activity_time_line" >
-        </activity>
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="ec0ff7240371ebf9c6f39f991bc1ea71dcf31279" />

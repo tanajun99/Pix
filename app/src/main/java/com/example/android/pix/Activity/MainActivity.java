@@ -5,14 +5,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Locale;
 
-import android.app.ActivityOptions;
-import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.RecyclerView;
-import android.transition.Explode;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -34,27 +31,42 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.ViewGroup;
 
 import com.example.android.pix.Adapter.PagerCustomAdapter;
-import com.example.android.pix.Fragment.NavigationDrawerFragment;
-import com.example.android.pix.Fragment.PlaceholderFragment;
+
+import com.example.android.pix.Fragment.RecyclerViewFragment;
+import com.example.android.pix.Fragment.ScrollFragment;
 import com.example.android.pix.ParseConstants;
 import com.example.android.pix.R;
+import com.github.florent37.materialviewpager.MaterialViewPager;
 import com.parse.ParseUser;
 
-public class MainActivity extends FragmentActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks  {
+public class MainActivity extends ActionBarActivity {
 
 
-    ViewPager mViewPager;
     View indicator;
     TabWidget tabWidget;
     PagerCustomAdapter mPagerCustomAdapter;
 
-    private NavigationDrawerFragment mNavigationDrawerFragment;
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
     RecyclerView.Adapter mAdapter;
     private CharSequence mTitle;
+    private MaterialViewPager mViewPager;
+    private DrawerLayout mDrawer;
+    private ActionBarDrawerToggle mDrawerToggle;
+    private Toolbar toolbar;
+
 
 
 
@@ -183,51 +195,109 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mPagerCustomAdapter = new PagerCustomAdapter(this,getSupportFragmentManager());
+        mViewPager = (MaterialViewPager) findViewById(R.id.materialViewPager);
 
-        mViewPager = (ViewPager) findViewById(R.id.pager);
-        mViewPager.setAdapter(mPagerCustomAdapter);
+        toolbar = mViewPager.getToolbar();
+        mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-        tabWidget = (TabWidget) findViewById(android.R.id.tabs);
-        // Delete the strips
-        tabWidget.setStripEnabled(false);
-        tabWidget.setShowDividers(LinearLayout.SHOW_DIVIDER_NONE);
-        // Delete the elevation
-        getActionBar().setElevation(0);
-        //indicator の設定
-        indicator = findViewById(R.id.indicator);
-        mViewPager.setOnPageChangeListener(new PageChangeListener());
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
 
-        // 影をつける
-        final TabHost tabHost = (TabHost) findViewById(android.R.id.tabhost);
-        tabHost.setup();
-
-        LayoutInflater inflater = LayoutInflater.from(this);
-        for (int i = 0; i < mPagerCustomAdapter.getCount(); i++) {
-
-            tabHost.addTab(tabHost
-                    .newTabSpec(String.valueOf(i))
-                    .setIndicator(mPagerCustomAdapter.getPageTitle(i))
-                    .setContent(android.R.id.tabcontent));
+            final ActionBar actionBar = getSupportActionBar();
+            if (actionBar != null) {
+                actionBar.setDisplayHomeAsUpEnabled(true);
+                actionBar.setDisplayShowHomeEnabled(true);
+                actionBar.setDisplayShowTitleEnabled(true);
+                actionBar.setDisplayUseLogoEnabled(false);
+                actionBar.setHomeButtonEnabled(true);
+            }
         }
 
-        float elevation = 4 * getResources().getDisplayMetrics().density;
-        tabHost.setElevation(elevation);
-        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawer, 0, 0);
+        mDrawer.setDrawerListener(mDrawerToggle);
+
+        mViewPager.getViewPager().setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
+
+            int oldPosition = -1;
+
             @Override
-            public void onTabChanged(String tabId) {
-                mViewPager.setCurrentItem(Integer.valueOf(tabId));
+            public Fragment getItem(int position) {
+                switch (position) {
+                    //case 0:
+                    //    return RecyclerViewFragment.newInstance();
+                    case 1:
+                        return ScrollFragment.newInstance();
+                    //case 2:
+                    //    return ListViewFragment.newInstance();
+                    //case 3:
+                    //    return WebViewFragment.newInstance();
+                    default:
+                        return RecyclerViewFragment.newInstance();
+                }
+            }
+
+            @Override
+            public void setPrimaryItem(ViewGroup container, int position, Object object) {
+                super.setPrimaryItem(container, position, object);
+
+                //only if position changed
+                if(position == oldPosition)
+                    return;
+                oldPosition = position;
+
+                int color = 0;
+                String imageUrl = "";
+                switch (position){
+                    case 0:
+                        imageUrl = "http://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2014/06/wallpaper_51.jpg";
+                        color = getResources().getColor(R.color.blue);
+                        break;
+                    case 1:
+                        imageUrl = "https://fs01.androidpit.info/a/63/0e/android-l-wallpapers-630ea6-h900.jpg";
+                        color = getResources().getColor(R.color.green);
+                        break;
+                    case 2:
+                        imageUrl = "http://www.droid-life.com/wp-content/uploads/2014/10/lollipop-wallpapers10.jpg";
+                        color = getResources().getColor(R.color.cyan);
+                        break;
+                    case 3:
+                        imageUrl = "http://www.tothemobile.com/wp-content/uploads/2014/07/original.jpg";
+                        color = getResources().getColor(R.color.red);
+                        break;
+                }
+
+                final int fadeDuration = 400;
+                mViewPager.setImageUrl(imageUrl,fadeDuration);
+                mViewPager.setColor(color,fadeDuration);
+
+            }
+
+            @Override
+            public int getCount() {
+                return 4;
+            }
+
+            @Override
+            public CharSequence getPageTitle(int position) {
+                switch (position){
+                    case 0:
+                        return "Selection";
+                    case 1:
+                        return "Actualités";
+                    case 2:
+                        return "Professionnel";
+                    case 3:
+                        return "Divertissement";
+                }
+                return "";
             }
         });
+        mViewPager.getViewPager().setOffscreenPageLimit(mViewPager.getViewPager().getAdapter().getCount());
+        mViewPager.getPagerTitleStrip().setViewPager(mViewPager.getViewPager());
 
-        mNavigationDrawerFragment = (NavigationDrawerFragment)
-                getFragmentManager().findFragmentById(R.id.navigation_drawer);
-        mTitle = getTitle();
+        mViewPager.getViewPager().setCurrentItem(1);
 
-        // Set up the drawer.
-        mNavigationDrawerFragment.setUp(
-                R.id.navigation_drawer,
-                (DrawerLayout) findViewById(R.id.drawer_layout));
+
     }
 
 
@@ -338,61 +408,5 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
-    }
-
-    @Override
-    public void onNavigationDrawerItemSelected(int position) {
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
-                .commit();
-    }
-
-    public void onSectionAttached(int number) {
-        switch (number) {
-            case 1:
-                mTitle = getString(R.string.title_section1);
-                break;
-            case 2:
-                mTitle = getString(R.string.title_section2);
-                break;
-            case 3:
-                mTitle = getString(R.string.title_section3);
-                break;
-        }
-    }
-
-    private class PageChangeListener implements ViewPager.OnPageChangeListener {
-        private int scrollingState = ViewPager.SCROLL_STATE_IDLE;
-
-        @Override
-        public void onPageSelected(int position) {
-            // スクロール中はonPageScrolled()で描画するのでここではしない
-            if (scrollingState == ViewPager.SCROLL_STATE_IDLE) {
-                updateIndicatorPosition(position, 0);
-            }
-            tabWidget.setCurrentTab(position);
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int state) {
-            scrollingState = state;
-        }
-
-        @Override
-        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            updateIndicatorPosition(position, positionOffset);
-        }
-
-        private void updateIndicatorPosition(int position, float positionOffset) {
-            View tabView = tabWidget.getChildTabViewAt(position);
-            int indicatorWidth = tabView.getWidth();
-            int indicatorLeft = (int) ((position + positionOffset) * indicatorWidth);
-
-            final FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) indicator.getLayoutParams();
-            layoutParams.width = indicatorWidth;
-            layoutParams.setMargins(indicatorLeft, 0, 0, 0);
-            indicator.setLayoutParams(layoutParams);
-        }
     }
 }
