@@ -42,6 +42,7 @@ import com.example.android.pix.Fragment.ScrollFragment;
 import com.example.android.pix.Fragment.TimeLineRecyclerViewFragment;
 import com.example.android.pix.ParseConstants;
 import com.example.android.pix.R;
+import com.github.clans.fab.FloatingActionButton;
 import com.github.florent37.materialviewpager.MaterialViewPager;
 import com.parse.ParseUser;
 
@@ -234,13 +235,13 @@ public class MainActivity extends ActionBarActivity {
                 super.setPrimaryItem(container, position, object);
 
                 //only if position changed
-                if(position == oldPosition)
+                if (position == oldPosition)
                     return;
                 oldPosition = position;
 
                 int color = 0;
                 String imageUrl = "";
-                switch (position){
+                switch (position) {
                     case 0:
                         imageUrl = "http://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2014/06/wallpaper_51.jpg";
                         color = getResources().getColor(R.color.blue);
@@ -272,7 +273,7 @@ public class MainActivity extends ActionBarActivity {
 
             @Override
             public CharSequence getPageTitle(int position) {
-                switch (position){
+                switch (position) {
                     case 0:
                         return "INBOX";
                     case 1:
@@ -289,6 +290,30 @@ public class MainActivity extends ActionBarActivity {
         mViewPager.getPagerTitleStrip().setViewPager(mViewPager.getViewPager());
 
         mViewPager.getViewPager().setCurrentItem(1);
+
+        final FloatingActionButton fabCamera = (FloatingActionButton)findViewById(R.id.menu_camera);
+        fabCamera.setColorNormal(R.color.floatingbuttonMenu);
+        fabCamera.setColorNormalResId(R.color.floatingbuttonMenu);
+        fabCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setItems(R.array.camera_choices, mDialogListener);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        final FloatingActionButton fabEditFriends = (FloatingActionButton)findViewById(R.id.menu_friends);
+        fabEditFriends.setColorNormal(R.color.floatingbuttonMenu);
+        fabEditFriends.setColorNormalResId(R.color.floatingbuttonMenu);
+        fabEditFriends.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, EditMembersActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -369,16 +394,6 @@ public class MainActivity extends ActionBarActivity {
             case R.id.action_logout:
                 ParseUser.logOut();
                 navigateToLogin();
-                break;
-            case R.id.action_edit_friends:
-                Intent intent = new Intent(this, EditMembersActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.action_camera:
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setItems(R.array.camera_choices, mDialogListener);
-                AlertDialog dialog = builder.create();
-                dialog.show();
                 break;
         }
 

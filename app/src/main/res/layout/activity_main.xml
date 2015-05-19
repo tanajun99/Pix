@@ -39,7 +39,7 @@
         fab:menu_shadowRadius="4dp"
         fab:menu_shadowXOffset="1dp"
         fab:menu_shadowYOffset="3dp"
-        fab:menu_colorNormal="#E040FB"
+        fab:menu_colorNormal="#00BCD4"
         fab:menu_colorPressed="#C5CAE9"
         fab:menu_colorRipple="#99FFFFFF"
         fab:menu_animationDelayPerItem="50"
@@ -72,6 +72,10 @@
             android:layout_height="wrap_content"
             fab:fab_size="mini"
             fab:fab_label="teka a photo"
+            android:background="#E040FB"
+            style="@style/MenuButtomSmall"
+
+
             />
 
         <com.github.clans.fab.FloatingActionButton
@@ -80,6 +84,9 @@
             android:layout_height="wrap_content"
             fab:fab_size="mini"
             fab:fab_label="more friends"
+            android:background="#E040FB"
+            style="@style/MenuButtomSmall"
+
             />
 
 

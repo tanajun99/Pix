@@ -35,4 +35,6 @@
         <item name="spinBars">true</item>
         <item name="color">#00BCD4</item>
     </style>
+
+    <style name="MenuButtomSmall">#9C27B0</style>
 </resources>
