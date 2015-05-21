@@ -43,6 +43,11 @@ import com.example.android.pix.R;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.florent37.materialviewpager.MaterialViewPager;
 import com.parse.ParseUser;
+import com.rey.material.app.Dialog;
+import com.rey.material.app.DialogFragment;
+import com.rey.material.app.SimpleDialog;
+import com.rey.material.widget.EditText;
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -305,10 +310,10 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        final FloatingActionButton addFriends = (FloatingActionButton)findViewById(R.id.menu_friends);
-        addFriends.setColorNormal(R.color.floatingbuttonMenu);
-        addFriends.setColorNormalResId(R.color.floatingbuttonMenu);
-        addFriends.setOnClickListener(new View.OnClickListener() {
+        final FloatingActionButton fabFriends = (FloatingActionButton)findViewById(R.id.menu_friends);
+        fabFriends.setColorNormal(R.color.floatingbuttonMenu);
+        fabFriends.setColorNormalResId(R.color.floatingbuttonMenu);
+        fabFriends.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, EditMembersActivity.class);
@@ -322,8 +327,36 @@ public class MainActivity extends ActionBarActivity {
         fabPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, EditMembersActivity.class);
-                startActivity(intent);
+                Dialog.Builder builder = new SimpleDialog.Builder(R.style.SimpleDialog){
+
+                    @Override
+                    protected void onBuildDone(Dialog dialog) {
+                        dialog.layoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    }
+
+                    @Override
+                    public void onPositiveActionClicked(DialogFragment fragment) {
+                        EditText et_pass = (EditText)fragment.getDialog().findViewById(R.id.custom_et_password);
+                        Toast.makeText(MainActivity.this, "Connected. pass=" + et_pass.getText().toString(), Toast.LENGTH_SHORT).show();
+                        super.onPositiveActionClicked(fragment);
+                    }
+
+                    @Override
+                    public void onNegativeActionClicked(DialogFragment fragment) {
+                        Toast.makeText(MainActivity.this, "Cancelled", Toast.LENGTH_SHORT).show();
+                        super.onNegativeActionClicked(fragment);
+                    }
+                };
+
+                builder.title("Google Wi-Fi")
+                        .positiveAction("CONNECT")
+                        .negativeAction("CANCEL")
+                        .contentView(R.layout.dialog_custum);
+
+                DialogFragment fragment = DialogFragment.newInstance(builder);
+                fragment.show(getSupportFragmentManager(),null);
+
+
             }
         });
 

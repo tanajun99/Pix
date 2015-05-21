@@ -1,6 +1,10 @@
 buildscript {
     repositories {
         maven { url 'https://maven.fabric.io/public' }
+        maven {
+            url "https://oss.sonatype.org/content/repositories/snapshots"
+        }
+
     }
 
     dependencies {
@@ -11,7 +15,14 @@ apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
 
 repositories {
-    maven { url 'https://maven.fabric.io/public' }
+    maven {
+        url 'https://maven.fabric.io/public'
+
+    }
+    maven {
+        url "https://oss.sonatype.org/content/repositories/snapshots"
+    }
+
     mavenCentral()
 }
 
@@ -46,8 +57,10 @@ dependencies {
     compile fileTree(dir: 'libs', include: 'Parse-*.jar')
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.facebook.android:facebook-android-sdk:4.0.0'
-
     compile "commons-io:commons-io:+"
+    compile 'com.github.rey5137:material:1.1.1'
+    compile 'com.github.rey5137:material:1.1.1-SNAPSHOT'
+
     compile('com.twitter.sdk.android:twitter:1.5.0@aar') {
         transitive = true;
     }

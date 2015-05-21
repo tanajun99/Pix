@@ -71,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             fab:fab_size="mini"
-            fab:fab_label="Add friends"
+            fab:fab_label="Add Friends"
             style="@style/MenuButtomSmall"
             />
 
@@ -80,7 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             fab:fab_size="mini"
-            fab:fab_label="teka a photo"
+            fab:fab_label="Send Photo"
             style="@style/MenuButtomSmall"
             />
 
@@ -89,11 +89,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             fab:fab_size="mini"
-            fab:fab_label="teka a photo"
+            fab:fab_label="Post photo"
             style="@style/MenuButtomSmall"
             />
-
-
 
     </com.github.clans.fab.FloatingActionMenu>
 

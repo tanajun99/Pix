@@ -82,6 +82,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.clans/fab/1.5.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.florent37/materialviewpager/1.0.3.3/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.ksoichiro/android-observablescrollview/1.5.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.rey5137/material/1.1.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.jpardogo.materialtabstrip/library/1.0.9/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.twitter.cobalt/performance-metrics/0.2.0/jars" />
@@ -134,6 +135,7 @@
     <orderEntry type="library" exported="" name="cardview-v7-22.0.0" level="project" />
     <orderEntry type="library" exported="" name="tweet-composer-0.7.3" level="project" />
     <orderEntry type="library" exported="" name="tweet-ui-1.2.0" level="project" />
+    <orderEntry type="library" exported="" name="material-1.1.1" level="project" />
     <orderEntry type="library" exported="" name="answers-1.2.0" level="project" />
     <orderEntry type="library" exported="" name="digits-1.4.1" level="project" />
     <orderEntry type="library" exported="" name="support-v4-22.1.1" level="project" />
