@@ -39,7 +39,7 @@
         fab:menu_shadowRadius="4dp"
         fab:menu_shadowXOffset="1dp"
         fab:menu_shadowYOffset="3dp"
-        fab:menu_colorNormal="#00BCD4"
+        fab:menu_colorNormal="#1DE9B6"
         fab:menu_colorPressed="#C5CAE9"
         fab:menu_colorRipple="#99FFFFFF"
         fab:menu_animationDelayPerItem="50"
@@ -67,26 +67,30 @@
         fab:menu_backgroundColor="@android:color/transparent">
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_camera"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            fab:fab_size="mini"
-            fab:fab_label="teka a photo"
-            android:background="#E040FB"
-            style="@style/MenuButtomSmall"
-
-
-            />
-
-        <com.github.clans.fab.FloatingActionButton
             android:id="@+id/menu_friends"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             fab:fab_size="mini"
-            fab:fab_label="more friends"
-            android:background="#E040FB"
+            fab:fab_label="Add friends"
             style="@style/MenuButtomSmall"
+            />
 
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_size="mini"
+            fab:fab_label="teka a photo"
+            style="@style/MenuButtomSmall"
+            />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_post"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_size="mini"
+            fab:fab_label="teka a photo"
+            style="@style/MenuButtomSmall"
             />
 
 

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="2dp"
+        android:layout_marginBottom="@dimen/cardMarginVertical"
+        android:layout_marginLeft="@dimen/cardMarginHorizontal"
+        android:layout_marginRight="@dimen/cardMarginHorizontal"
+        android:layout_marginTop="@dimen/cardMarginVertical"
+        app:cardPreventCornerOverlap="false"
+        app:contentPadding="0dp"
+        android:background="@android:color/white">
+
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginRight="@dimen/inbox_horizontal_margin"
+            android:layout_marginLeft="@dimen/inbox_horizontal_margin"
+            android:layout_marginTop="@dimen/inbox_vertical_margin"
+            android:paddingRight="@dimen/message_vertical_padding"
+            android:paddingLeft="@dimen/message_vertical_padding"
+            android:background="@android:color/white">
+
+            <ImageView
+                android:id="@+id/messageIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:src="@drawable/ic_action_picture"
+                android:contentDescription="@string/content_desc_message_icon"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"/>
+
+            <TextView
+                android:id="@+id/senderLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/messageIcon"
+                android:layout_alignParentLeft="true"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:paddingLeft="@dimen/message_vertical_padding"
+                android:paddingTop="@dimen/message_vertical_padding"
+                android:text="Test Text"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/timeLabel"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/senderLabel"
+                android:layout_toLeftOf="@+id/messageIcon"
+                android:paddingLeft="@dimen/message_vertical_padding"
+                android:textColor="@color/light_gray"
+                android:paddingBottom="@dimen/message_vertical_padding"
+                />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+</FrameLayout>

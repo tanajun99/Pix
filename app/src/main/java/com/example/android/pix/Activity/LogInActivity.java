@@ -5,24 +5,32 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.pix.PixApplication;
 import com.example.android.pix.R;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
+import com.parse.ParseTwitterUtils;
 import com.parse.ParseUser;
+import com.twitter.sdk.android.core.Callback;
+import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.TwitterException;
+import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
 public class LogInActivity extends Activity {
 
     protected EditText mUsername;
     protected EditText mPassword;
     protected Button mLoginButton;
-
+    protected TwitterLoginButton mTwitter;
     protected TextView mSignUpTextView;
 
     @Override
@@ -91,5 +99,49 @@ public class LogInActivity extends Activity {
                 }
             }
         });
+//        mTwitter = (TwitterLoginButton)findViewById(R.id.twitter_login);
+//        mTwitter.setCallback(new Callback<TwitterSession>() {
+//            @Override
+//            public void success(Result<TwitterSession> result) {
+//                onTwitterLoginButtonClicked();
+//            }
+//
+//            @Override
+//            public void failure(TwitterException e) {
+//                Toast.makeText(LogInActivity.this, "Error!", Toast.LENGTH_LONG).show();
+//            }
+//        });
     }
+
+    private void onTwitterLoginButtonClicked() {
+        ParseTwitterUtils.logIn(this, new LogInCallback() {
+            @Override
+            public void done(ParseUser user, ParseException err) {
+                if (user == null) {
+                    Log.d("MyApp", "Uh oh. The user cancelled the Twitter login.");
+                } else if (user.isNew()) {
+                    Log.d("MyApp", "User signed up and logged in through Twitter!");
+                    showMainActivity();
+                } else {
+                    Log.d("MyApp", "User logged in through Twitter!");
+                    showMainActivity();
+                }
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);
+        mTwitter.onActivityResult(requestCode, resultCode, data);
+        //callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void showMainActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
 }

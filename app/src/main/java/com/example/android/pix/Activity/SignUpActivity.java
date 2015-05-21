@@ -58,9 +58,6 @@ public class SignUpActivity extends Activity {
         //FacebookSdk.sdkInitialize(getApplicationContext());
         //callbackManager = CallbackManager.Factory.create();
 
-        ActionBar actionBar = getActionBar();
-        actionBar.hide();
-
         mUsername = (EditText)findViewById(R.id.usernameField);
         mPassword = (EditText)findViewById(R.id.passwordField);
         mEmail = (EditText)findViewById(R.id.emailField);
@@ -129,18 +126,18 @@ public class SignUpActivity extends Activity {
                 }
             }
         });
-        mTwitter = (TwitterLoginButton)findViewById(R.id.twitter_login);
-        mTwitter.setCallback(new Callback<TwitterSession>() {
-            @Override
-            public void success(Result<TwitterSession> result) {
-                onTwitterLoginButtonClicked();
-            }
-
-            @Override
-            public void failure(TwitterException e) {
-                Toast.makeText(SignUpActivity.this, "Error!", Toast.LENGTH_LONG).show();
-            }
-        });
+//        mTwitter = (TwitterLoginButton)findViewById(R.id.twitter_login);
+//        mTwitter.setCallback(new Callback<TwitterSession>() {
+//            @Override
+//            public void success(Result<TwitterSession> result) {
+//                onTwitterLoginButtonClicked();
+//            }
+//
+//            @Override
+//            public void failure(TwitterException e) {
+//                Toast.makeText(SignUpActivity.this, "Error!", Toast.LENGTH_LONG).show();
+//            }
+//        });
 
 //        mFaceBook = (LoginButton)findViewById(R.id.facebook_login);
 //        mFaceBook.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {

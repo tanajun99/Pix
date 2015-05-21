@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.android.pix.MD5Utils;
 import com.example.android.pix.R;
+import com.parse.ParseACL;
 import com.parse.ParseUser;
 import com.squareup.picasso.Picasso;
 
@@ -43,7 +44,12 @@ public class UserCustomAdapter extends ArrayAdapter<ParseUser> {
         }
 
         ParseUser user = mUsers.get(position);
+        if (user.getEmail()==null){
+            user.setEmail("twitter@email.com");
+        }
+
         String email = user.getEmail().toLowerCase();
+
 
         if (email.equals("")) {
             holder.userImageView.setImageResource(R.mipmap.ic_person_grey600_48dp);

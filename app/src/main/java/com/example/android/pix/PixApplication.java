@@ -28,12 +28,14 @@ public class PixApplication extends Application {
         ParseInstallation.getCurrentInstallation().saveInBackground();
         ParseTwitterUtils.initialize("j2GdKjcnqaIGlSwf8FYTUnMLM", "DruaY9IZWepkWZt8s7quFH9twwFE7Nzpuq8txzwHEYw9NMyUhU");
         ParseFacebookUtils.initialize(this);
+        ParseUser.enableAutomaticUser();
+        ParseUser.getCurrentUser().increment("RunCount");
+        ParseUser.getCurrentUser().saveInBackground();
     }
 
     public static void updateParseInstallation(ParseUser user){
         ParseInstallation installation = ParseInstallation.getCurrentInstallation();
         installation.put(ParseConstants.KEY_USER_ID, user.getObjectId());
         installation.saveInBackground();
-
     }
 }

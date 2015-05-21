@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="blue">#303F9F</color>
+    <color name="blue">#1A237E</color>
 
     <color name="accent_color">@color/blue</color>
     <color name="colorPrimary">@color/blue</color>

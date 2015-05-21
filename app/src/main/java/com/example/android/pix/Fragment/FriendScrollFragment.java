@@ -6,17 +6,18 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.example.android.pix.R;
 import com.github.florent37.materialviewpager.MaterialViewPagerHelper;
 import com.github.ksoichiro.android.observablescrollview.ObservableScrollView;
 
-public class ScrollFragment extends Fragment {
+public class FriendScrollFragment extends Fragment {
 
     private ObservableScrollView mScrollView;
 
-    public static ScrollFragment newInstance() {
-        return new ScrollFragment();
+    public static FriendScrollFragment newInstance() {
+        return new FriendScrollFragment();
     }
 
     @Override

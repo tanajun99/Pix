@@ -14,6 +14,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.android.pix.ParseConstants;
@@ -78,20 +79,18 @@ public class EditMembersActivity extends Activity {
                     mUsers = users;
                     String[] usernames = new String[mUsers.size()];
                     int i = 0;
-                    for(ParseUser user : mUsers) {
+                    for (ParseUser user : mUsers) {
                         usernames[i] = user.getUsername();
                         i++;
                     }
-                    if(mGridView.getAdapter() == null) {
+                    if (mGridView.getAdapter() == null) {
                         UserCustomAdapter adapter = new UserCustomAdapter(EditMembersActivity.this, mUsers);
                         mGridView.setAdapter(adapter);
-                    }
-                    else{
-                        ((UserCustomAdapter)mGridView.getAdapter()).refill(mUsers);
+                    } else {
+                        ((UserCustomAdapter) mGridView.getAdapter()).refill(mUsers);
                     }
                     addFriendCheckmarks();
-                }
-                else {
+                } else {
                     Log.e(TAG, e.getMessage());
                     AlertDialog.Builder builder = new AlertDialog.Builder(EditMembersActivity.this);
                     builder.setMessage(e.getMessage())
@@ -102,15 +101,6 @@ public class EditMembersActivity extends Activity {
                 }
             }
         });
-    }
-
-    /**
-     * Set up the {@link android.app.ActionBar}.
-     */
-    private void setupActionBar() {
-
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-
     }
 
     @Override
@@ -162,12 +152,13 @@ public class EditMembersActivity extends Activity {
                 // add the friend
                 mFriendsRelation.add(mUsers.get(position));
                 checkImageView.setVisibility(View.VISIBLE);
+                Toast.makeText(EditMembersActivity.this, R.string.edit_member_follow,Toast.LENGTH_LONG).show();
             }
             else {
                 // remove the friend
                 mFriendsRelation.remove(mUsers.get(position));
                 checkImageView.setVisibility(View.INVISIBLE);
-
+                Toast.makeText(EditMembersActivity.this, R.string.edit_member_unfollower,Toast.LENGTH_LONG).show();
             }
 
             mCurrentUser.saveInBackground(new SaveCallback() {

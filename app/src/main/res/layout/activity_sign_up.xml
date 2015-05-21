@@ -40,10 +40,10 @@
         android:paddingTop="@dimen/signup_vertical_padding"
         android:paddingBottom="@dimen/signup_vertical_padding"
         android:background="@android:color/white"
-        android:layout_below="@+id/textView2"
+        android:layout_marginTop="60dp"
+        android:layout_below="@+id/sub_title"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="39dp">
+        android:layout_alignParentEnd="true">
 
     <EditText
         android:id="@+id/usernameField"
@@ -52,7 +52,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:ems="10"
-        android:hint="@string/username_hint" >
+        android:hint="@string/username_hint"
+        android:textColor="@color/blue">
 
     </EditText>
 
@@ -64,7 +65,8 @@
         android:layout_below="@+id/usernameField"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="@string/password_hint" />
+        android:hint="@string/password_hint"
+        android:textColor="@color/blue"/>
 
     <EditText
         android:id="@+id/emailField"
@@ -74,7 +76,8 @@
         android:layout_below="@+id/passwordField"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:hint="@string/email_hint" />
+        android:hint="@string/email_hint"
+        android:textColor="@color/blue"/>
 
    </LinearLayout>
 
@@ -112,33 +115,33 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sign up by email or Log in with SNS!"
-        android:id="@+id/textView2"
-        android:textColor="@android:color/white"
-        android:layout_below="@+id/sub_title"
-        android:layout_centerHorizontal="true"/>
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Sign up by email or Log in with SNS!"-->
+        <!--android:id="@+id/textView2"-->
+        <!--android:textColor="@android:color/white"-->
+        <!--android:layout_below="@+id/sub_title"-->
+        <!--android:layout_centerHorizontal="true"/>-->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="-------- OR --------"
-        android:id="@+id/textView3"
-        android:layout_marginTop="33dp"
-        android:textColor="@android:color/white"
-        android:layout_below="@+id/button_Divider"
-        android:layout_alignRight="@+id/title"
-        android:layout_alignEnd="@+id/title"/>
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; OR &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;"-->
+        <!--android:id="@+id/textView3"-->
+        <!--android:layout_marginTop="33dp"-->
+        <!--android:textColor="@android:color/white"-->
+        <!--android:layout_below="@+id/button_Divider"-->
+        <!--android:layout_alignRight="@+id/title"-->
+        <!--android:layout_alignEnd="@+id/title"/>-->
 
 
-    <com.twitter.sdk.android.core.identity.TwitterLoginButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/twitter_login"
-        android:layout_below="@+id/textView3"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="46dp"/>
+    <!--<com.twitter.sdk.android.core.identity.TwitterLoginButton-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/twitter_login"-->
+        <!--android:layout_below="@+id/textView3"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="46dp"/>-->
 
 </RelativeLayout>

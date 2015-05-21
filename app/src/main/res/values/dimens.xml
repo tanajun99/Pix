@@ -1,6 +1,6 @@
 <resources>
     <dimen name="cardMarginHorizontal">0dp</dimen>
-    <dimen name="cardMarginVertical">1dp</dimen>
+    <dimen name="cardMarginVertical">0.1dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="message_list_item_vertical_margin">8dp</dimen>
@@ -15,7 +15,7 @@
     <dimen name="inbox_vertical_margin">0dp</dimen>
     <dimen name="inbox_horizontal_margin">6dp</dimen>
     <dimen name="message_vertical_padding">6dp</dimen>
-    <dimen name="user_grid_spacing">8dp</dimen>
+    <dimen name="user_grid_spacing">4dp</dimen>
 
     <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
          https://developer.android.com/design/patterns/navigation-drawer.html -->

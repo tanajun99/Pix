@@ -2,7 +2,8 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context="com.example.android.pix.Fragment.MembersFragment">
+             tools:context="com.example.android.pix.Fragment.MembersFragment"
+             android:background="@color/blue">
 
     <android.widget.Toolbar
         android:layout_width="match_parent"
@@ -12,16 +13,14 @@
 
     </android.widget.Toolbar>
 
-
-
     <GridView
         android:id="@+id/friendsGrid"
         android:layout_width="match_parent"
-        android:layout_height="343dp"
+        android:layout_height="385dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:numColumns="auto_fit"
-        android:columnWidth="90dp"
+        android:columnWidth="140dp"
         android:stretchMode="columnWidth"
         android:padding="8dp"
         android:clipToPadding="false"
@@ -29,7 +28,8 @@
         android:verticalSpacing="@dimen/user_grid_spacing"
         android:gravity="center"
         android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal|bottom">
+        android:layout_gravity="center_horizontal|bottom"
+        >
 
     </GridView>
 

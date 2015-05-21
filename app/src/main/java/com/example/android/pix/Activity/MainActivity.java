@@ -1,8 +1,10 @@
 package com.example.android.pix.Activity;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+
 import java.util.Locale;
 
 import android.os.Bundle;
@@ -12,7 +14,6 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.TabWidget;
 
-import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -33,12 +34,9 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.ViewGroup;
 
-
-import com.example.android.pix.Fragment.ListViewFragment;
 import com.example.android.pix.Fragment.InboxRecyclerViewFragment;
 import com.example.android.pix.Fragment.MembersFragment;
 import com.example.android.pix.Fragment.ProfileRecyclerViewFragment;
-import com.example.android.pix.Fragment.ScrollFragment;
 import com.example.android.pix.Fragment.TimeLineRecyclerViewFragment;
 import com.example.android.pix.ParseConstants;
 import com.example.android.pix.R;
@@ -73,6 +71,8 @@ public class MainActivity extends ActionBarActivity {
 
     public static final int MEDIA_TYPE_IMAGE = 4;
     public static final int MEDIA_TYPE_VIDEO = 5;
+    private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
+
 
     public static final int FILE_SIZE_LIMIT = 1024*1024*10; // 10 MB
 
@@ -86,6 +86,7 @@ public class MainActivity extends ActionBarActivity {
                         case 0: // Take picture
                             Intent takePhotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                             mMediaUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
+
                             if (mMediaUri == null) {
                                 // display an error
                                 Toast.makeText(MainActivity.this, R.string.error_external_storage,
@@ -222,7 +223,7 @@ public class MainActivity extends ActionBarActivity {
                     case 1:
                         return TimeLineRecyclerViewFragment.newInstance();
                     case 2:
-                        return ScrollFragment.newInstance();
+                        return MembersFragment.newInstance();
                     case 3:
                         return ProfileRecyclerViewFragment.newInstance();
                     default:
@@ -243,19 +244,19 @@ public class MainActivity extends ActionBarActivity {
                 String imageUrl = "";
                 switch (position) {
                     case 0:
-                        imageUrl = "http://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2014/06/wallpaper_51.jpg";
+                        imageUrl = "http://tanajun99.com/wp-content/uploads/2015/05/background1.png";
                         color = getResources().getColor(R.color.blue);
                         break;
                     case 1:
-                        imageUrl = "https://fs01.androidpit.info/a/63/0e/android-l-wallpapers-630ea6-h900.jpg";
+                        imageUrl = "";
                         color = getResources().getColor(R.color.green);
                         break;
                     case 2:
-                        imageUrl = "http://www.droid-life.com/wp-content/uploads/2014/10/lollipop-wallpapers10.jpg";
+                        imageUrl = "";
                         color = getResources().getColor(R.color.cyan);
                         break;
                     case 3:
-                        imageUrl = "http://www.tothemobile.com/wp-content/uploads/2014/07/original.jpg";
+                        imageUrl = "";
                         color = getResources().getColor(R.color.red);
                         break;
                 }
@@ -291,10 +292,10 @@ public class MainActivity extends ActionBarActivity {
 
         mViewPager.getViewPager().setCurrentItem(1);
 
-        final FloatingActionButton fabCamera = (FloatingActionButton)findViewById(R.id.menu_camera);
-        fabCamera.setColorNormal(R.color.floatingbuttonMenu);
-        fabCamera.setColorNormalResId(R.color.floatingbuttonMenu);
-        fabCamera.setOnClickListener(new View.OnClickListener() {
+        final FloatingActionButton fabSend = (FloatingActionButton)findViewById(R.id.menu_send);
+        fabSend.setColorNormal(R.color.floatingbuttonMenu);
+        fabSend.setColorNormalResId(R.color.floatingbuttonMenu);
+        fabSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -304,16 +305,28 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        final FloatingActionButton fabEditFriends = (FloatingActionButton)findViewById(R.id.menu_friends);
-        fabEditFriends.setColorNormal(R.color.floatingbuttonMenu);
-        fabEditFriends.setColorNormalResId(R.color.floatingbuttonMenu);
-        fabEditFriends.setOnClickListener(new View.OnClickListener() {
+        final FloatingActionButton addFriends = (FloatingActionButton)findViewById(R.id.menu_friends);
+        addFriends.setColorNormal(R.color.floatingbuttonMenu);
+        addFriends.setColorNormalResId(R.color.floatingbuttonMenu);
+        addFriends.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, EditMembersActivity.class);
                 startActivity(intent);
             }
         });
+
+        final FloatingActionButton fabPost = (FloatingActionButton)findViewById(R.id.menu_post);
+        fabPost.setColorNormal(R.color.floatingbuttonMenu);
+        fabPost.setColorNormalResId(R.color.floatingbuttonMenu);
+        fabPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, EditMembersActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
@@ -413,4 +426,13 @@ public class MainActivity extends ActionBarActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
+
+//    public void onTakePhotoClick() {
+//        int[] startingLocation = new int[2];
+//        btnCreate.getLocationOnScreen(startingLocation);
+//        startingLocation[0] += btnCreate.getWidth() / 2;
+//        TakePhotoActivity.startCameraFromLocation(startingLocation, this);
+//        overridePendingTransition(0, 0);
+//    }
+
 }

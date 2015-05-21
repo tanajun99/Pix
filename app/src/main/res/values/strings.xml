@@ -69,4 +69,6 @@
 
     <string name="action_example">Example action</string>
     <string name="facebook_app_id">1626288724295959</string>
+    <string name="edit_member_follow">Follow!</string>
+    <string name="edit_member_unfollower">Unfollow</string>
 </resources>

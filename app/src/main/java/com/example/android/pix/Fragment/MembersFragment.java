@@ -5,6 +5,7 @@ import java.util.List;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import com.example.android.pix.ParseConstants;
 import com.example.android.pix.R;
 import com.example.android.pix.Adapter.UserCustomAdapter;
+import com.github.florent37.materialviewpager.MaterialViewPagerHelper;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -35,11 +37,9 @@ public class MembersFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.user_grid,
                 container, false);
-
         mGridView = (GridView)rootView.findViewById(R.id.friendsGrid);
         TextView emptyTextView = (TextView)rootView.findViewById(android.R.id.empty);
         mGridView.setEmptyView(emptyTextView);
-
 
         return rootView;
     }

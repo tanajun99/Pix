@@ -53,6 +53,7 @@
             android:hint="@string/username_hint"
             android:textColorHint="@color/light_gray"
             android:textSize="18sp"
+            android:textColor="@color/blue"
             />
 
         <EditText
@@ -64,6 +65,7 @@
             android:inputType="textPassword"
             android:textColorHint="@color/light_gray"
             android:textSize="18sp"
+            android:textColor="@color/blue"
             />
 
     </LinearLayout>
@@ -94,23 +96,23 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"/>
 
-    <com.twitter.sdk.android.core.identity.TwitterLoginButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/login_twitter"
-        android:layout_above="@+id/signUpText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="46dp"/>
+    <!--<com.twitter.sdk.android.core.identity.TwitterLoginButton-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/twitter_login"-->
+        <!--android:layout_above="@+id/signUpText"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginBottom="46dp"/>-->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="---------- OR ----------"
-        android:id="@+id/textView"
-        android:layout_marginTop="35dp"
-        android:textColor="@android:color/white"
-        android:layout_below="@+id/loginButton"
-        android:layout_centerHorizontal="true"/>
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; OR &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;"-->
+        <!--android:id="@+id/textView"-->
+        <!--android:layout_marginTop="35dp"-->
+        <!--android:textColor="@android:color/white"-->
+        <!--android:layout_below="@+id/loginButton"-->
+        <!--android:layout_centerHorizontal="true"/>-->
 
 
 </RelativeLayout>

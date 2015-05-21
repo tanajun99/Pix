@@ -55,18 +55,10 @@ public class InboxRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
         ViewHolder holder;
 
         View view = null;
-        switch (viewType) {
-            case TYPE_HEADER: {
-                view = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.list_item_card_big, parent, false);
 
-                return new RecyclerView.ViewHolder(view) {
-                };
-            }
-            case TYPE_CELL: {
                 if(view ==null) {
                     view = LayoutInflater.from(parent.getContext())
-                            .inflate(R.layout.list_item_card_small, parent, false);
+                            .inflate(R.layout.list_item_card_small_inbox, parent, false);
                     holder = new ViewHolder();
                     holder.iconImageView = (ImageView) view.findViewById(R.id.messageIcon);
                     holder.nameLabel = (TextView) view.findViewById(R.id.senderLabel);
@@ -98,13 +90,8 @@ public class InboxRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
                 holder.nameLabel.setText(message.getString(ParseConstants.KEY_SENDER_NAME));
                 return new RecyclerView.ViewHolder(view) {
                 };
-            }
+
         }
-
-
-        return null;
-    }
-
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
@@ -116,13 +103,10 @@ public class InboxRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
         }
     }
 
-
     private static class ViewHolder{
         ImageView iconImageView;
         TextView nameLabel;
         TextView timeLabel;
-
-
     }
 
     public void refill(List<ParseObject> messages) {
