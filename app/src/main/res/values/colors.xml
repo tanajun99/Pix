@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="blue">#0091EA</color>
-    <color name="actionButton">#EA80FC</color>
+    <color name="blue">#00838F</color>
+    <color name="actionButton">#3F51B5</color>
 
     <color name="accent_color">@color/blue</color>
     <color name="colorPrimary">@color/blue</color>

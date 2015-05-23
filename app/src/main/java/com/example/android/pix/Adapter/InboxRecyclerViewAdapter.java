@@ -54,9 +54,8 @@ public class InboxRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         ViewHolder holder;
 
-        View view = null;
+        View view;
 
-                if(view ==null) {
                     view = LayoutInflater.from(parent.getContext())
                             .inflate(R.layout.list_item_card_small_inbox, parent, false);
                     holder = new ViewHolder();
@@ -66,11 +65,6 @@ public class InboxRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
                     holder.titleLabel = (TextView)view.findViewById(R.id.titleLabel);
                     holder.commentLabel = (TextView)view.findViewById(R.id.commentLabel);
                     view.setTag(holder);
-
-                }
-                else{
-                    holder = (ViewHolder)view.getTag();
-                }
 
                 ParseObject message = mMessages.get(viewType);
 
@@ -94,7 +88,6 @@ public class InboxRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
                 holder.commentLabel.setText(message.getString(ParseConstants.KEY_SEND_COMMENT));
                 return new RecyclerView.ViewHolder(view) {
                 };
-
         }
 
     @Override
