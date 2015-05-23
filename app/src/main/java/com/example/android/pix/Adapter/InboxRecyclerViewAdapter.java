@@ -63,6 +63,8 @@ public class InboxRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
                     holder.iconImageView = (ImageView) view.findViewById(R.id.messageIcon);
                     holder.nameLabel = (TextView) view.findViewById(R.id.senderLabel);
                     holder.timeLabel = (TextView) view.findViewById(R.id.timeLabel);
+                    holder.titleLabel = (TextView)view.findViewById(R.id.titleLabel);
+                    holder.commentLabel = (TextView)view.findViewById(R.id.commentLabel);
                     view.setTag(holder);
 
                 }
@@ -88,6 +90,8 @@ public class InboxRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
                     holder.iconImageView.setImageResource(R.mipmap.ic_action_play_over_video);
                 }
                 holder.nameLabel.setText(message.getString(ParseConstants.KEY_SENDER_NAME));
+                holder.titleLabel.setText(message.getString(ParseConstants.KEY_SEND_TITLE));
+                holder.commentLabel.setText(message.getString(ParseConstants.KEY_SEND_COMMENT));
                 return new RecyclerView.ViewHolder(view) {
                 };
 
@@ -107,6 +111,8 @@ public class InboxRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
         ImageView iconImageView;
         TextView nameLabel;
         TextView timeLabel;
+        TextView titleLabel;
+        TextView commentLabel;
     }
 
     public void refill(List<ParseObject> messages) {
