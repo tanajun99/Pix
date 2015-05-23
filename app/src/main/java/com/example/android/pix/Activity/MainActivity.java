@@ -46,6 +46,7 @@ import com.parse.ParseUser;
 import com.rey.material.app.Dialog;
 import com.rey.material.app.DialogFragment;
 import com.rey.material.app.SimpleDialog;
+import com.rey.material.widget.Button;
 import com.rey.material.widget.EditText;
 
 
@@ -229,8 +230,6 @@ public class MainActivity extends ActionBarActivity {
                         return TimeLineRecyclerViewFragment.newInstance();
                     case 2:
                         return MembersFragment.newInstance();
-                    case 3:
-                        return ProfileRecyclerViewFragment.newInstance();
                     default:
                         return TimeLineRecyclerViewFragment.newInstance();
                 }
@@ -274,7 +273,7 @@ public class MainActivity extends ActionBarActivity {
 
             @Override
             public int getCount() {
-                return 4;
+                return 3;
             }
 
             @Override
@@ -286,8 +285,6 @@ public class MainActivity extends ActionBarActivity {
                         return "TIMELINE";
                     case 2:
                         return "FRIENDS";
-                    case 3:
-                        return "PROFILE";
                 }
                 return "";
             }
@@ -298,8 +295,8 @@ public class MainActivity extends ActionBarActivity {
         mViewPager.getViewPager().setCurrentItem(1);
 
         final FloatingActionButton fabSend = (FloatingActionButton)findViewById(R.id.menu_send);
-        fabSend.setColorNormal(R.color.floatingbuttonMenu);
-        fabSend.setColorNormalResId(R.color.floatingbuttonMenu);
+        fabSend.setColorNormal(R.color.actionButton);
+        fabSend.setColorNormalResId(R.color.actionButton);
         fabSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -311,8 +308,8 @@ public class MainActivity extends ActionBarActivity {
         });
 
         final FloatingActionButton fabFriends = (FloatingActionButton)findViewById(R.id.menu_friends);
-        fabFriends.setColorNormal(R.color.floatingbuttonMenu);
-        fabFriends.setColorNormalResId(R.color.floatingbuttonMenu);
+        fabFriends.setColorNormal(R.color.actionButton);
+        fabFriends.setColorNormalResId(R.color.actionButton);
         fabFriends.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -322,13 +319,13 @@ public class MainActivity extends ActionBarActivity {
         });
 
         final FloatingActionButton fabPost = (FloatingActionButton)findViewById(R.id.menu_post);
-        fabPost.setColorNormal(R.color.floatingbuttonMenu);
-        fabPost.setColorNormalResId(R.color.floatingbuttonMenu);
+        fabPost.setColorNormal(R.color.actionButton);
+        fabPost.setColorNormalResId(R.color.actionButton);
         fabPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Dialog.Builder builder = new SimpleDialog.Builder(R.style.SimpleDialog){
 
+                Dialog.Builder builder = new SimpleDialog.Builder(R.style.SimpleDialog){
                     @Override
                     protected void onBuildDone(Dialog dialog) {
                         dialog.layoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -336,8 +333,9 @@ public class MainActivity extends ActionBarActivity {
 
                     @Override
                     public void onPositiveActionClicked(DialogFragment fragment) {
-                        EditText et_pass = (EditText)fragment.getDialog().findViewById(R.id.custom_et_password);
-                        Toast.makeText(MainActivity.this, "Connected. pass=" + et_pass.getText().toString(), Toast.LENGTH_SHORT).show();
+                        Intent choosePhotoIntent = new Intent(Intent.ACTION_GET_CONTENT);
+                        choosePhotoIntent.setType("image/*");
+                        startActivityForResult(choosePhotoIntent, PICK_PHOTO_REQUEST);
                         super.onPositiveActionClicked(fragment);
                     }
 
@@ -346,17 +344,18 @@ public class MainActivity extends ActionBarActivity {
                         Toast.makeText(MainActivity.this, "Cancelled", Toast.LENGTH_SHORT).show();
                         super.onNegativeActionClicked(fragment);
                     }
+
+
                 };
 
-                builder.title("Google Wi-Fi")
-                        .positiveAction("CONNECT")
+                builder.title("Share Photo and any comments!!")
+                        .positiveAction("Photo")
                         .negativeAction("CANCEL")
-                        .contentView(R.layout.dialog_custum);
+
+                        .contentView(R.layout.dialog_custom);
 
                 DialogFragment fragment = DialogFragment.newInstance(builder);
-                fragment.show(getSupportFragmentManager(),null);
-
-
+                fragment.show(getSupportFragmentManager(), null);
             }
         });
 
@@ -412,7 +411,7 @@ public class MainActivity extends ActionBarActivity {
                 sendBroadcast(mediaScanIntent);
             }
 
-            Intent recipientsIntent = new Intent(this, MessageRecipientActivity.class);
+            Intent recipientsIntent = new Intent(this, AddTextActivity.class);
             recipientsIntent.setData(mMediaUri);
 
             String fileType;

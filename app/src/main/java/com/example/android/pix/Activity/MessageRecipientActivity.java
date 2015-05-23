@@ -3,9 +3,9 @@ package com.example.android.pix.Activity;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -52,12 +52,9 @@ public class MessageRecipientActivity extends Activity {
     protected MenuItem mSendMenuItem;
     protected Uri mMediaUri;
     protected String mFileType;
+    protected String mTitle;
+    protected String mComment;
     GridView mGridView;
-    private ViewPager mViewPager;
-    private DrawerLayout mDrawer;
-    private ActionBarDrawerToggle mDrawerToggle;
-    private Toolbar toolbar;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,9 +76,13 @@ public class MessageRecipientActivity extends Activity {
 
         TextView emptyTextView = (TextView)findViewById(android.R.id.empty);
         mGridView.setEmptyView(emptyTextView);
-
-        mMediaUri = getIntent().getData();
-        mFileType = getIntent().getExtras().getString(ParseConstants.KEY_FILE_TYPE);
+        Intent intent = getIntent();
+        mMediaUri = intent.getData();
+        mFileType = intent.getExtras().getString(ParseConstants.KEY_FILE_TYPE);
+        mTitle = intent.getExtras().getString(ParseConstants.KEY_SEND_TITLE);
+        mComment = intent.getExtras().getString(ParseConstants.KEY_SEND_COMMENT);
+        Log.d(ParseConstants.KEY_SEND_TITLE,mTitle);
+        Log.d(ParseConstants.KEY_SEND_COMMENT,mComment);
     }
 
     @Override
@@ -176,6 +177,8 @@ public class MessageRecipientActivity extends Activity {
         message.put(ParseConstants.KEY_SENDER_NAME, ParseUser.getCurrentUser().getUsername());
         message.put(ParseConstants.KEY_RECIPIENT_IDS, getRecipientIds());
         message.put(ParseConstants.KEY_FILE_TYPE, mFileType);
+        message.put(ParseConstants.KEY_SEND_TITLE,mTitle);
+        message.put(ParseConstants.KEY_SEND_COMMENT,mComment);
 
         byte[] fileBytes = FileManager.getByteArrayFromFile(this, mMediaUri);
 
@@ -212,7 +215,9 @@ public class MessageRecipientActivity extends Activity {
                 if (e == null) {
                     // success!
                     Toast.makeText(MessageRecipientActivity.this, R.string.success_message, Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(MessageRecipientActivity.this, MainActivity.class);
                     sendPushNotifications();
+                    startActivity(intent);
                 }
                 else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(MessageRecipientActivity.this);

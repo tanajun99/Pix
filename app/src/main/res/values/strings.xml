@@ -71,4 +71,6 @@
     <string name="facebook_app_id">1626288724295959</string>
     <string name="edit_member_follow">Follow!</string>
     <string name="edit_member_unfollower">Unfollow</string>
+    <string name="title_activity_add_text">AddTextActivity</string>
+    <string name="add_texts">Oops!, fill out both comment and title.</string>
 </resources>

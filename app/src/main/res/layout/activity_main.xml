@@ -39,7 +39,7 @@
         fab:menu_shadowRadius="4dp"
         fab:menu_shadowXOffset="1dp"
         fab:menu_shadowYOffset="3dp"
-        fab:menu_colorNormal="#1DE9B6"
+        fab:menu_colorNormal="@color/actionButton"
         fab:menu_colorPressed="#C5CAE9"
         fab:menu_colorRipple="#99FFFFFF"
         fab:menu_animationDelayPerItem="50"
