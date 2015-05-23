@@ -7,7 +7,7 @@
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="80dp"
         app:cardCornerRadius="2dp"
         app:cardElevation="2dp"
         android:layout_marginBottom="@dimen/cardMarginVertical"
@@ -21,7 +21,7 @@
         <RelativeLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="80dp"
             android:layout_marginRight="@dimen/inbox_horizontal_margin"
             android:layout_marginLeft="@dimen/inbox_horizontal_margin"
             android:layout_marginTop="@dimen/inbox_vertical_margin"
@@ -49,16 +49,44 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:paddingLeft="@dimen/message_vertical_padding"
                 android:paddingTop="@dimen/message_vertical_padding"
-                android:text="Test Text"
+                android:text="Name"
                 android:textSize="16sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="New Text"
-                android:id="@+id/timeLabel"
+                android:text="Title"
+                android:id="@+id/titleLabel"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/senderLabel"
+                android:layout_toLeftOf="@+id/messageIcon"
+                android:paddingLeft="@dimen/message_vertical_padding"
+                android:textColor="@color/light_gray"
+                android:paddingBottom="@dimen/message_vertical_padding"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time"
+                android:id="@+id/timeLabel"
+                android:layout_below="@id/messageIcon"
+                android:paddingRight="@dimen/message_vertical_padding"
+                android:textColor="@color/light_gray"
+                android:paddingBottom="@dimen/message_vertical_padding"
+                android:layout_toRightOf="@id/titleLabel"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:gravity="right"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Comment"
+                android:id="@+id/commentLabel"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/titleLabel"
                 android:layout_toLeftOf="@+id/messageIcon"
                 android:paddingLeft="@dimen/message_vertical_padding"
                 android:textColor="@color/light_gray"
@@ -68,4 +96,11 @@
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/textView"
+        android:layout_gravity="left|bottom"/>
 </FrameLayout>

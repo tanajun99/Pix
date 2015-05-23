@@ -92,8 +92,6 @@ public class AddTextActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
-
-
     }
 
     @Override
