@@ -62,12 +62,12 @@ public class EditMembersActivity extends Activity {
         super.onResume();
 
         mCurrentUser = ParseUser.getCurrentUser();
-        mFriendsRelation = mCurrentUser.getRelation(ParseConstants.KEY_FRIENDS_RELATION);
+        mFriendsRelation = mCurrentUser.getRelation(ParseConstants.KEY_FRIENDS_RELATION_SEND);
 
         setProgressBarIndeterminateVisibility(true);
 
         ParseQuery<ParseUser> query = ParseUser.getQuery();
-        query.orderByAscending(ParseConstants.KEY_USERNAME);
+        query.orderByAscending(ParseConstants.KEY_USERNAME_SEND);
         query.setLimit(1000);
         query.findInBackground(new FindCallback<ParseUser>() {
             @Override

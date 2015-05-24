@@ -3,7 +3,6 @@ package com.example.android.pix;
 import android.app.Application;
 
 import com.crashlytics.android.Crashlytics;
-import com.facebook.FacebookSdk;
 import com.parse.Parse;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseInstallation;
@@ -35,7 +34,7 @@ public class PixApplication extends Application {
 
     public static void updateParseInstallation(ParseUser user){
         ParseInstallation installation = ParseInstallation.getCurrentInstallation();
-        installation.put(ParseConstants.KEY_USER_ID, user.getObjectId());
+        installation.put(ParseConstants.KEY_USER_ID_SEND, user.getObjectId());
         installation.saveInBackground();
     }
 }

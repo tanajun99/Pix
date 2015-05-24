@@ -82,6 +82,10 @@
             android:name=".Activity.ViewerPhotoActivity"
             android:label="@string/title_activity_viewer_photo" >
         </activity>
+        <activity
+            android:name=".Activity.AddPostTextActivity"
+            android:label="@string/title_activity_add_text_post" >
+        </activity>
 
         <service android:name="com.parse.PushService" />
 
@@ -116,7 +120,7 @@
             android:value="ec0ff7240371ebf9c6f39f991bc1ea71dcf31279" />
 
         <activity
-            android:name=".Activity.AddTextActivity"
+            android:name=".Activity.AddSendTextActivity"
             android:label="@string/title_activity_add_text" >
         </activity>
     </application>

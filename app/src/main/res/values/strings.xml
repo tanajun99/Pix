@@ -34,8 +34,6 @@
     <string name="error_file_too_large">The selected file is too large! Select a new file.</string>
 
     <string-array name="camera_choices">
-        <item>Take Picture</item>
-        <item>Take Video</item>
         <item>Choose Picture</item>
         <item>Choose Video</item>
     </string-array>
@@ -73,4 +71,5 @@
     <string name="edit_member_unfollower">Unfollow</string>
     <string name="title_activity_add_text">AddTextActivity</string>
     <string name="add_texts">Oops!, fill out both comment and title.</string>
+    <string name="title_activity_add_text_post">AddPostTextActivity</string>
 </resources>

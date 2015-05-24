@@ -20,7 +20,7 @@ import com.example.android.pix.R;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-public class AddTextActivity extends ActionBarActivity {
+public class AddSendTextActivity extends ActionBarActivity {
 
     ImageView mPhoto;
     EditText mTitle;
@@ -33,7 +33,7 @@ public class AddTextActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_text);
+        setContentView(R.layout.activity_add_text_send);
 
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = false;
@@ -59,28 +59,28 @@ public class AddTextActivity extends ActionBarActivity {
             mPhoto.setImageBitmap(bitmap);
         }
 
-        final String fleType = getIntent().getExtras().getString(ParseConstants.KEY_FILE_TYPE);
+        final String fleType = getIntent().getExtras().getString(ParseConstants.KEY_FILE_TYPE_SEND);
         getGetUri = getIntent().getData();
 
         mPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(mTitle==null){
-                    Toast.makeText(AddTextActivity.this, R.string.add_texts,Toast.LENGTH_LONG);
+                    Toast.makeText(AddSendTextActivity.this, R.string.add_texts,Toast.LENGTH_LONG);
                 }
                 else if (mComment==null){
-                    Toast.makeText(AddTextActivity.this, R.string.add_texts,Toast.LENGTH_LONG);
+                    Toast.makeText(AddSendTextActivity.this, R.string.add_texts,Toast.LENGTH_LONG);
 
                 }
                 else{
                     final String title = mTitle.getText().toString().trim();
                     final String comment = mComment.getText().toString().trim();
 
-                    Intent intent = new Intent(AddTextActivity.this, MessageRecipientActivity.class);
+                    Intent intent = new Intent(AddSendTextActivity.this, MessageRecipientActivity.class);
                     intent.putExtra(ParseConstants.KEY_SEND_TITLE,title);
                     intent.putExtra(ParseConstants.KEY_SEND_COMMENT, comment);
                     intent.setData(getGetUri);
-                    intent.putExtra(ParseConstants.KEY_FILE_TYPE,fleType);
+                    intent.putExtra(ParseConstants.KEY_FILE_TYPE_SEND,fleType);
                     startActivity(intent);
                 }
             }
@@ -88,7 +88,7 @@ public class AddTextActivity extends ActionBarActivity {
         mCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddTextActivity.this, MainActivity.class);
+                Intent intent = new Intent(AddSendTextActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

@@ -54,7 +54,7 @@ public class PostsCustomAdapter extends ArrayAdapter<ParseObject> {
 
         holder.timeLabel.setText(convertedDate);
 
-        if (message.getString(ParseConstants.KEY_FILE_TYPE).equals(ParseConstants.TYPE_IMAGE)) {
+        if (message.getString(ParseConstants.KEY_FILE_TYPE_SEND).equals(ParseConstants.TYPE_IMAGE_SEND)) {
             holder.iconImageView.setImageResource(R.mipmap.ic_action_picture);
         }
         else {

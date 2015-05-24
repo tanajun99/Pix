@@ -88,7 +88,7 @@ public class FileManager {
     public static String getFileName(Context context, Uri uri, String fileType) {
         String fileName = "uploaded_file.";
 
-        if (fileType.equals(ParseConstants.TYPE_IMAGE)) {
+        if (fileType.equals(ParseConstants.TYPE_IMAGE_SEND)) {
             fileName += "png";
         }
         else {

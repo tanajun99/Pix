@@ -1,7 +1,5 @@
 package com.example.android.pix.Fragment;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,23 +9,18 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
-import com.example.android.pix.Activity.ViewerPhotoActivity;
 import com.example.android.pix.Adapter.InboxRecyclerViewAdapter;
-import com.example.android.pix.Adapter.MessageCustomAdapter;
 import com.example.android.pix.ParseConstants;
 import com.example.android.pix.R;
 import com.github.florent37.materialviewpager.MaterialViewPagerHelper;
 import com.github.florent37.materialviewpager.adapter.RecyclerViewMaterialAdapter;
 import com.parse.FindCallback;
 import com.parse.ParseException;
-import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -77,7 +70,7 @@ public class InboxRecyclerViewFragment extends Fragment {
 
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(ParseConstants.CLASS_MESSAGES);
         query.whereEqualTo(ParseConstants.KEY_RECIPIENT_IDS, ParseUser.getCurrentUser().getObjectId());
-        query.addDescendingOrder(ParseConstants.KEY_CREATED_AT);
+        query.addDescendingOrder(ParseConstants.KEY_CREATED_AT_SEND);
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> messages, ParseException e) {
@@ -108,16 +101,17 @@ public class InboxRecyclerViewFragment extends Fragment {
 
 
 
+
 //    @Override
 //    public void onListItemClick(ListView l, View v, int position, long id) {
 //        super.onListItemClick(l, v, position, id);
 //
 //        ParseObject message = mMessages.get(position);
-//        String messageType = message.getString(ParseConstants.KEY_FILE_TYPE);
-//        ParseFile file = message.getParseFile(ParseConstants.KEY_FILE);
+//        String messageType = message.getString(ParseConstants.KEY_FILE_TYPE_SEND);
+//        ParseFile file = message.getParseFile(ParseConstants.KEY_FILE_SEND);
 //        Uri fileUri = Uri.parse(file.getUrl());
 //
-//        if (messageType.equals(ParseConstants.TYPE_IMAGE)) {
+//        if (messageType.equals(ParseConstants.TYPE_IMAGE_SEND)) {
 //            // view the image
 //            Intent intent = new Intent(getActivity(), ViewerPhotoActivity.class);
 //            intent.setData(fileUri);

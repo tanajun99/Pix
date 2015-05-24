@@ -22,7 +22,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -36,18 +35,12 @@ import android.view.ViewGroup;
 
 import com.example.android.pix.Fragment.InboxRecyclerViewFragment;
 import com.example.android.pix.Fragment.MembersFragment;
-import com.example.android.pix.Fragment.ProfileRecyclerViewFragment;
 import com.example.android.pix.Fragment.TimeLineRecyclerViewFragment;
 import com.example.android.pix.ParseConstants;
 import com.example.android.pix.R;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.florent37.materialviewpager.MaterialViewPager;
 import com.parse.ParseUser;
-import com.rey.material.app.Dialog;
-import com.rey.material.app.DialogFragment;
-import com.rey.material.app.SimpleDialog;
-import com.rey.material.widget.Button;
-import com.rey.material.widget.EditText;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -64,6 +57,7 @@ public class MainActivity extends ActionBarActivity {
     private DrawerLayout mDrawer;
     private ActionBarDrawerToggle mDrawerToggle;
     private Toolbar toolbar;
+    String postOrSend;
 
 
 
@@ -89,41 +83,41 @@ public class MainActivity extends ActionBarActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     switch(which) {
-                        case 0: // Take picture
-                            Intent takePhotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                            mMediaUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
-
-                            if (mMediaUri == null) {
-                                // display an error
-                                Toast.makeText(MainActivity.this, R.string.error_external_storage,
-                                        Toast.LENGTH_LONG).show();
-                            }
-                            else {
-                                takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, mMediaUri);
-                                startActivityForResult(takePhotoIntent, TAKE_PHOTO_REQUEST);
-                            }
-                            break;
-                        case 1: // Take video
-                            Intent videoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-                            mMediaUri = getOutputMediaFileUri(MEDIA_TYPE_VIDEO);
-                            if (mMediaUri == null) {
-                                // display an error
-                                Toast.makeText(MainActivity.this, R.string.error_external_storage,
-                                        Toast.LENGTH_LONG).show();
-                            }
-                            else {
-                                videoIntent.putExtra(MediaStore.EXTRA_OUTPUT, mMediaUri);
-                                videoIntent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 10);
-                                videoIntent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 0); // 0 = lowest res
-                                startActivityForResult(videoIntent, TAKE_VIDEO_REQUEST);
-                            }
-                            break;
-                        case 2: // Choose picture
+//                        case 0: // Take picture
+//                            Intent takePhotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                            mMediaUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
+//
+//                            if (mMediaUri == null) {
+//                                // display an error
+//                                Toast.makeText(MainActivity.this, R.string.error_external_storage,
+//                                        Toast.LENGTH_LONG).show();
+//                            }
+//                            else {
+//                                takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, mMediaUri);
+//                                startActivityForResult(takePhotoIntent, TAKE_PHOTO_REQUEST);
+//                            }
+//                            break;
+//                        case 1: // Take video
+//                            Intent videoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+//                            mMediaUri = getOutputMediaFileUri(MEDIA_TYPE_VIDEO);
+//                            if (mMediaUri == null) {
+//                                // display an error
+//                                Toast.makeText(MainActivity.this, R.string.error_external_storage,
+//                                        Toast.LENGTH_LONG).show();
+//                            }
+//                            else {
+//                                videoIntent.putExtra(MediaStore.EXTRA_OUTPUT, mMediaUri);
+//                                videoIntent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 10);
+//                                videoIntent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 0); // 0 = lowest res
+//                                startActivityForResult(videoIntent, TAKE_VIDEO_REQUEST);
+//                            }
+//                            break;
+                        case 0:
                             Intent choosePhotoIntent = new Intent(Intent.ACTION_GET_CONTENT);
                             choosePhotoIntent.setType("image/*");
                             startActivityForResult(choosePhotoIntent, PICK_PHOTO_REQUEST);
                             break;
-                        case 3: // Choose video
+                        case 1:
                             Intent chooseVideoIntent = new Intent(Intent.ACTION_GET_CONTENT);
                             chooseVideoIntent.setType("video/*");
                             Toast.makeText(MainActivity.this, R.string.video_file_size_warning, Toast.LENGTH_LONG).show();
@@ -133,18 +127,13 @@ public class MainActivity extends ActionBarActivity {
                 }
 
                 private Uri getOutputMediaFileUri(int mediaType) {
-                    // To be safe, you should check that the SDCard is mounted
-                    // using Environment.getExternalStorageState() before doing this.
                     if (isExternalStorageAvailable()) {
-                        // get the URI
 
-                        // 1. Get the external storage directory
                         String appName = MainActivity.this.getString(R.string.app_name);
                         File mediaStorageDir = new File(
                                 Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
                                 appName);
 
-                        // 2. Create our subdirectory
                         if (! mediaStorageDir.exists()) {
                             if (! mediaStorageDir.mkdirs()) {
                                 Log.e(TAG, "Failed to create directory.");
@@ -152,8 +141,6 @@ public class MainActivity extends ActionBarActivity {
                             }
                         }
 
-                        // 3. Create a file name
-                        // 4. Create the file
                         File mediaFile;
                         Date now = new Date();
                         String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(now);
@@ -300,6 +287,7 @@ public class MainActivity extends ActionBarActivity {
         fabSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                postOrSend = "Send";
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setItems(R.array.camera_choices, mDialogListener);
                 AlertDialog dialog = builder.create();
@@ -324,42 +312,13 @@ public class MainActivity extends ActionBarActivity {
         fabPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Dialog.Builder builder = new SimpleDialog.Builder(R.style.SimpleDialog){
-                    @Override
-                    protected void onBuildDone(Dialog dialog) {
-                        dialog.layoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                    }
-
-                    @Override
-                    public void onPositiveActionClicked(DialogFragment fragment) {
-                        Intent choosePhotoIntent = new Intent(Intent.ACTION_GET_CONTENT);
-                        choosePhotoIntent.setType("image/*");
-                        startActivityForResult(choosePhotoIntent, PICK_PHOTO_REQUEST);
-                        super.onPositiveActionClicked(fragment);
-                    }
-
-                    @Override
-                    public void onNegativeActionClicked(DialogFragment fragment) {
-                        Toast.makeText(MainActivity.this, "Cancelled", Toast.LENGTH_SHORT).show();
-                        super.onNegativeActionClicked(fragment);
-                    }
-
-
-                };
-
-                builder.title("Share Photo and any comments!!")
-                        .positiveAction("Photo")
-                        .negativeAction("CANCEL")
-
-                        .contentView(R.layout.dialog_custom);
-
-                DialogFragment fragment = DialogFragment.newInstance(builder);
-                fragment.show(getSupportFragmentManager(), null);
+                postOrSend = "Post";
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setItems(R.array.camera_choices, mDialogListener);
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
-
-
     }
 
     @Override
@@ -410,26 +369,39 @@ public class MainActivity extends ActionBarActivity {
                 mediaScanIntent.setData(mMediaUri);
                 sendBroadcast(mediaScanIntent);
             }
+            if(postOrSend=="Send") {
+                Intent recipientsIntent = new Intent(this, AddSendTextActivity.class);
+                recipientsIntent.setData(mMediaUri);
+                String fileType;
+                if (requestCode == PICK_PHOTO_REQUEST || requestCode == TAKE_PHOTO_REQUEST) {
+                    fileType = ParseConstants.TYPE_IMAGE_SEND;
+                }
+                else {
+                    fileType = ParseConstants.TYPE_VIDEO_SEND;
+                }
 
-            Intent recipientsIntent = new Intent(this, AddTextActivity.class);
-            recipientsIntent.setData(mMediaUri);
-
-            String fileType;
-            if (requestCode == PICK_PHOTO_REQUEST || requestCode == TAKE_PHOTO_REQUEST) {
-                fileType = ParseConstants.TYPE_IMAGE;
+                recipientsIntent.putExtra(ParseConstants.KEY_FILE_TYPE_SEND, fileType);
+                startActivity(recipientsIntent);
             }
-            else {
-                fileType = ParseConstants.TYPE_VIDEO;
-            }
+            else{
+                Intent postIntent = new Intent(this, AddPostTextActivity.class);
+                postIntent.setData(mMediaUri);
+                String fileType;
+                if (requestCode == PICK_PHOTO_REQUEST || requestCode == TAKE_PHOTO_REQUEST) {
+                    fileType = ParseConstants.TYPE_IMAGE_POST;
+                }
+                else {
+                    fileType = ParseConstants.TYPE_VIDEO_POST;
+                }
 
-            recipientsIntent.putExtra(ParseConstants.KEY_FILE_TYPE, fileType);
-            startActivity(recipientsIntent);
+                postIntent.putExtra(ParseConstants.KEY_FILE_TYPE_POST, fileType);
+                startActivity(postIntent);
+            }
         }
         else if (resultCode != RESULT_CANCELED) {
             Toast.makeText(this, R.string.general_error, Toast.LENGTH_LONG).show();
         }
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -458,13 +430,4 @@ public class MainActivity extends ActionBarActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
-
-//    public void onTakePhotoClick() {
-//        int[] startingLocation = new int[2];
-//        btnCreate.getLocationOnScreen(startingLocation);
-//        startingLocation[0] += btnCreate.getWidth() / 2;
-//        TakePhotoActivity.startCameraFromLocation(startingLocation, this);
-//        overridePendingTransition(0, 0);
-//    }
-
 }

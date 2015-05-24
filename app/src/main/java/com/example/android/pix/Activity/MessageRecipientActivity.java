@@ -9,15 +9,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -30,7 +25,6 @@ import com.example.android.pix.FileManager;
 import com.example.android.pix.ParseConstants;
 import com.example.android.pix.R;
 import com.example.android.pix.Adapter.UserCustomAdapter;
-import com.github.florent37.materialviewpager.MaterialViewPager;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -78,7 +72,7 @@ public class MessageRecipientActivity extends Activity {
         mGridView.setEmptyView(emptyTextView);
         Intent intent = getIntent();
         mMediaUri = intent.getData();
-        mFileType = intent.getExtras().getString(ParseConstants.KEY_FILE_TYPE);
+        mFileType = intent.getExtras().getString(ParseConstants.KEY_FILE_TYPE_SEND);
         mTitle = intent.getExtras().getString(ParseConstants.KEY_SEND_TITLE);
         mComment = intent.getExtras().getString(ParseConstants.KEY_SEND_COMMENT);
         Log.d(ParseConstants.KEY_SEND_TITLE,mTitle);
@@ -90,12 +84,12 @@ public class MessageRecipientActivity extends Activity {
         super.onResume();
 
         mCurrentUser = ParseUser.getCurrentUser();
-        mFriendsRelation = mCurrentUser.getRelation(ParseConstants.KEY_FRIENDS_RELATION);
+        mFriendsRelation = mCurrentUser.getRelation(ParseConstants.KEY_FRIENDS_RELATION_SEND);
 
         setProgressBarIndeterminateVisibility(true);
 
         ParseQuery<ParseUser> query = mFriendsRelation.getQuery();
-        query.addAscendingOrder(ParseConstants.KEY_USERNAME);
+        query.addAscendingOrder(ParseConstants.KEY_USERNAME_SEND);
         query.findInBackground(new FindCallback<ParseUser>() {
             @Override
             public void done(List<ParseUser> friends, ParseException e) {
@@ -176,7 +170,7 @@ public class MessageRecipientActivity extends Activity {
         message.put(ParseConstants.KEY_SENDER_ID, ParseUser.getCurrentUser().getObjectId());
         message.put(ParseConstants.KEY_SENDER_NAME, ParseUser.getCurrentUser().getUsername());
         message.put(ParseConstants.KEY_RECIPIENT_IDS, getRecipientIds());
-        message.put(ParseConstants.KEY_FILE_TYPE, mFileType);
+        message.put(ParseConstants.KEY_FILE_TYPE_SEND, mFileType);
         message.put(ParseConstants.KEY_SEND_TITLE,mTitle);
         message.put(ParseConstants.KEY_SEND_COMMENT,mComment);
 
@@ -186,13 +180,13 @@ public class MessageRecipientActivity extends Activity {
             return null;
         }
         else {
-            if (mFileType.equals(ParseConstants.TYPE_IMAGE)) {
+            if (mFileType.equals(ParseConstants.TYPE_IMAGE_SEND)) {
                 fileBytes = FileManager.reduceImageForUpload(fileBytes);
             }
 
             String fileName = FileManager.getFileName(this, mMediaUri, mFileType);
             ParseFile file = new ParseFile(fileName, fileBytes);
-            message.put(ParseConstants.KEY_FILE, file);
+            message.put(ParseConstants.KEY_FILE_SEND, file);
 
             return message;
         }
@@ -233,7 +227,7 @@ public class MessageRecipientActivity extends Activity {
 
     protected void sendPushNotifications() {
         ParseQuery<ParseInstallation> query = ParseInstallation.getQuery();
-        query.whereContainedIn(ParseConstants.KEY_USER_ID,getRecipientIds());
+        query.whereContainedIn(ParseConstants.KEY_USER_ID_SEND,getRecipientIds());
 
         ParsePush push = new ParsePush();
         push.setQuery(query);
