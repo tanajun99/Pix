@@ -8,7 +8,7 @@
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:background="@drawable/background"
                 tools:context="com.example.android.pix.Activity.SignUpActivity">
-    <TextView
+    <com.rey.material.widget.TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title"
@@ -19,7 +19,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"/>
 
-    <TextView
+    <com.rey.material.widget.TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/subtitle"
@@ -89,27 +89,27 @@
         android:layout_centerHorizontal="true"
         android:src="@mipmap/button_divider"/>
 
-    <Button
+    <com.rey.material.widget.Button
         android:id="@+id/signupButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editTextLayout"
         android:layout_marginRight="0dp"
         android:text="@string/sign_up_button_label"
-        android:background="#00BCD4"
+        android:background="@color/actionButton"
         android:textColor="@android:color/white"
         android:layout_toLeftOf="@id/button_Divider"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
 
-    <Button
+    <com.rey.material.widget.Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/cancel_buttom"
         android:text="@string/sign_up_buuton_cancel"
         android:layout_below="@id/editTextLayout"
         android:layout_marginLeft="0dp"
-        android:background="#00BCD4"
+        android:background="@color/actionButton"
         android:textColor="@android:color/white"
         android:layout_toRightOf="@id/button_Divider"
         android:layout_alignParentRight="true"

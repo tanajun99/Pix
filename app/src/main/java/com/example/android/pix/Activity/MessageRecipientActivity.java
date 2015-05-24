@@ -25,6 +25,7 @@ import com.example.android.pix.FileManager;
 import com.example.android.pix.ParseConstants;
 import com.example.android.pix.R;
 import com.example.android.pix.Adapter.UserCustomAdapter;
+import com.github.clans.fab.FloatingActionButton;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -54,7 +55,7 @@ public class MessageRecipientActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-        setContentView(R.layout.user_grid);
+        setContentView(R.layout.user_grid_recip);
 
 //        mViewPager = (MaterialViewPager) findViewById(R.id.materialViewPager);
 //
@@ -75,8 +76,42 @@ public class MessageRecipientActivity extends Activity {
         mFileType = intent.getExtras().getString(ParseConstants.KEY_FILE_TYPE_SEND);
         mTitle = intent.getExtras().getString(ParseConstants.KEY_SEND_TITLE);
         mComment = intent.getExtras().getString(ParseConstants.KEY_SEND_COMMENT);
-        Log.d(ParseConstants.KEY_SEND_TITLE,mTitle);
-        Log.d(ParseConstants.KEY_SEND_COMMENT,mComment);
+        Log.d(ParseConstants.KEY_SEND_TITLE, mTitle);
+        Log.d(ParseConstants.KEY_SEND_COMMENT, mComment);
+
+        final FloatingActionButton fabSend = (FloatingActionButton)findViewById(R.id.send_add_text);
+        fabSend.setColorNormal(R.color.actionButton);
+        fabSend.setColorNormalResId(R.color.actionButton);
+        fabSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ParseObject message = createMessage();
+                if (message == null) {
+                    // error
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MessageRecipientActivity.this);
+                    builder.setMessage(R.string.error_selecting_file)
+                            .setTitle(R.string.error_selecting_file_title)
+                            .setPositiveButton(android.R.string.ok, null);
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+                else {
+                    send(message);
+                    finish();
+                }
+            }
+        });
+
+        final FloatingActionButton fabFriends = (FloatingActionButton)findViewById(R.id.cancel_add_text);
+        fabFriends.setColorNormal(R.color.actionButton);
+        fabFriends.setColorNormalResId(R.color.actionButton);
+        fabFriends.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MessageRecipientActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -121,48 +156,6 @@ public class MessageRecipientActivity extends Activity {
                 }
             }
         });
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_message_recipient, menu);
-        mSendMenuItem = menu.getItem(0);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                // This ID represents the Home or Up button. In the case of this
-                // activity, the Up button is shown. Use NavUtils to allow users
-                // to navigate up one level in the application structure. For
-                // more details, see the Navigation pattern on Android Design:
-                //
-                // http://developer.android.com/design/patterns/navigation.html#up-vs-back
-                //
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
-            case R.id.action_send:
-                ParseObject message = createMessage();
-                if (message == null) {
-                    // error
-                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                    builder.setMessage(R.string.error_selecting_file)
-                            .setTitle(R.string.error_selecting_file_title)
-                            .setPositiveButton(android.R.string.ok, null);
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-                }
-                else {
-                    send(message);
-                    finish();
-                }
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     protected ParseObject createMessage() {

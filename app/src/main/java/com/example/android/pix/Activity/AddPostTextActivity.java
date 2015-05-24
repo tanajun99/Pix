@@ -7,10 +7,9 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
-import android.view.MenuItem;
+
 import android.view.View;
-import android.widget.Button;
+
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -18,12 +17,14 @@ import android.widget.Toast;
 import com.example.android.pix.FileManager;
 import com.example.android.pix.ParseConstants;
 import com.example.android.pix.R;
+import com.github.clans.fab.FloatingActionButton;
 import com.parse.ParseACL;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+import com.rey.material.widget.Button;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -50,8 +51,6 @@ public class AddPostTextActivity extends ActionBarActivity {
         mPhoto = (ImageView)findViewById(R.id.preview_image);
         mTitle = (EditText)findViewById(R.id.add_title);
         mComment = (EditText)findViewById(R.id.add_comment);
-        mPost = (Button)findViewById(R.id.post_add_text);
-        mCancel = (Button)findViewById(R.id.cancel_add_text);
         getUri = getIntent().getData();
 
         try {
@@ -68,7 +67,10 @@ public class AddPostTextActivity extends ActionBarActivity {
 
         getGetUri = getIntent().getData();
 
-        mPost.setOnClickListener(new View.OnClickListener() {
+        final FloatingActionButton fabPost = (FloatingActionButton)findViewById(R.id.post_add_text);
+        fabPost.setColorNormal(R.color.actionButton);
+        fabPost.setColorNormalResId(R.color.actionButton);
+        fabPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(mTitle==null){
@@ -86,33 +88,17 @@ public class AddPostTextActivity extends ActionBarActivity {
                 }
             }
         });
-        mCancel.setOnClickListener(new View.OnClickListener() {
+
+        final FloatingActionButton fabFriends = (FloatingActionButton)findViewById(R.id.cancel_add_text);
+        fabFriends.setColorNormal(R.color.actionButton);
+        fabFriends.setColorNormalResId(R.color.actionButton);
+        fabFriends.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AddPostTextActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_add_text, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     public ParseObject createPost() {
@@ -170,6 +156,5 @@ public class AddPostTextActivity extends ActionBarActivity {
             }
         });
     }
-
 }
 

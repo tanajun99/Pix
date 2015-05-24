@@ -1,56 +1,25 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:fab="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:paddingBottom="@dimen/activity_vertical_margin"
-                tools:context="com.example.android.pix.Activity.AddSendTextActivity">
+                tools:context="com.example.android.pix.Activity.AddPostTextActivity">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:id="@+id/preview_image"
         android:src="@mipmap/avatar_empty"
-        android:layout_alignRight="@+id/add_title"
-        android:layout_alignEnd="@+id/add_title"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:scaleType="fitXY"
-        android:layout_alignParentTop="true"
-        />
-
-    <Button
-        style="@style/Material.Widget"
-        android:text="POST"
-        android:textColor="@color/abc_primary_text_material_dark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:background="@android:color/holo_blue_dark"
-        android:id="@+id/post_add_text"
-        android:layout_below="@+id/add_comment"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="47dp"
-        android:layout_marginStart="47dp"/>
-
-    <Button
-        style="@style/Material.Widget"
-        android:text="CANCEL"
-        android:textColor="@color/abc_primary_text_material_dark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:background="@android:color/holo_blue_dark"
-        android:id="@+id/cancel_add_text"
-        android:layout_below="@+id/add_comment"
-        android:layout_alignRight="@+id/add_comment"
-        android:layout_alignEnd="@+id/add_comment"
-        android:layout_marginRight="42dp"
-        android:layout_marginEnd="42dp"/>
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/add_title"/>
 
     <EditText
         style="@style/Material.Widget.EditText"
@@ -63,8 +32,8 @@
         android:textDirection="locale"
         android:paddingTop="8dp"
         android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"/>
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
     <EditText
         style="@style/Material.Widget.EditText"
@@ -76,10 +45,71 @@
         android:hint="Comment"
         android:textDirection="locale"
         android:paddingTop="8dp"
-        android:layout_below="@+id/preview_image"
+        android:layout_marginTop="55dp"
+        android:layout_alignTop="@+id/add_title"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        fab:menu_fab_size="normal"
+        fab:menu_showShadow="true"
+        fab:menu_shadowColor="#66000000"
+        fab:menu_shadowRadius="4dp"
+        fab:menu_shadowXOffset="1dp"
+        fab:menu_shadowYOffset="3dp"
+        fab:menu_colorNormal="@color/actionButton"
+        fab:menu_colorPressed="#C5CAE9"
+        fab:menu_colorRipple="#99FFFFFF"
+        fab:menu_animationDelayPerItem="50"
+        fab:menu_icon="@drawable/fab_add"
+        fab:menu_buttonSpacing="0dp"
+        fab:menu_labels_margin="0dp"
+        fab:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
+        fab:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
+        fab:menu_labels_paddingTop="4dp"
+        fab:menu_labels_paddingRight="8dp"
+        fab:menu_labels_paddingBottom="4dp"
+        fab:menu_labels_paddingLeft="8dp"
+        fab:menu_labels_padding="8dp"
+        fab:menu_labels_textColor="#FFFFFF"
+        fab:menu_labels_textSize="14sp"
+        fab:menu_labels_cornerRadius="3dp"
+        fab:menu_labels_colorNormal="#333333"
+        fab:menu_labels_colorPressed="#444444"
+        fab:menu_labels_colorRipple="#66FFFFFF"
+        fab:menu_labels_singleLine="false"
+        fab:menu_labels_ellipsize="none"
+        fab:menu_labels_maxLines="-1"
+        fab:menu_labels_position="left"
+        fab:menu_openDirection="up"
+        fab:menu_backgroundColor="@android:color/transparent"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="88dp"/>
+        android:layout_alignParentEnd="true">
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/post_add_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_size="mini"
+            fab:fab_label="POST"
+            style="@style/MenuButtomSmall"
+            />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/cancel_add_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_size="mini"
+            fab:fab_label="CANCEL"
+            style="@style/MenuButtomSmall"
+            />
+
+    </com.github.clans.fab.FloatingActionMenu>
+
 
 
 </RelativeLayout>

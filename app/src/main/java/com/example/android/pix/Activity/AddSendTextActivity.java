@@ -6,16 +6,15 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.android.pix.ParseConstants;
 import com.example.android.pix.R;
+import com.rey.material.widget.Button;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -62,6 +61,8 @@ public class AddSendTextActivity extends ActionBarActivity {
         final String fleType = getIntent().getExtras().getString(ParseConstants.KEY_FILE_TYPE_SEND);
         getGetUri = getIntent().getData();
 
+
+
         mPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,25 +93,5 @@ public class AddSendTextActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_add_text, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

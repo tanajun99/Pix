@@ -14,57 +14,52 @@
         android:layout_height="200dp"
         android:id="@+id/preview_image"
         android:src="@mipmap/avatar_empty"
-        android:layout_alignRight="@+id/add_title"
-        android:layout_alignEnd="@+id/add_title"
+        android:scaleType="fitXY"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:scaleType="fitXY"
         android:layout_alignParentTop="true"
-        />
+        android:layout_above="@+id/add_title"/>
 
-    <Button
+    <com.rey.material.widget.Button
         style="@style/Material.Widget"
-        android:text="POST"
+        android:text="CHOOSE FRIENDS"
+        android:paddingTop="8dp"
+        android:layout_marginTop="35dp"
         android:textColor="@color/abc_primary_text_material_dark"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:background="@android:color/holo_blue_dark"
         android:id="@+id/post_add_text"
         android:layout_below="@+id/add_comment"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="47dp"
-        android:layout_marginStart="47dp"/>
+        android:layout_alignLeft="@+id/cancel_add_text"
+        android:layout_alignStart="@+id/cancel_add_text"/>
 
-    <Button
+    <com.rey.material.widget.Button
         style="@style/Material.Widget"
         android:text="CANCEL"
         android:textColor="@color/abc_primary_text_material_dark"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:background="@android:color/holo_blue_dark"
         android:id="@+id/cancel_add_text"
-        android:layout_below="@+id/add_comment"
-        android:layout_alignRight="@+id/add_comment"
-        android:layout_alignEnd="@+id/add_comment"
-        android:layout_marginRight="42dp"
-        android:layout_marginEnd="42dp"/>
+        android:layout_below="@+id/post_add_text"
+        android:layout_centerHorizontal="true"/>
 
     <EditText
-    style="@style/Material.Widget.EditText"
-    android:id="@+id/add_title"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textColor="@color/blue"
-    android:textColorHint="@color/blue"
-    android:hint="Title"
-    android:textDirection="locale"
-    android:paddingTop="8dp"
-    android:layout_centerVertical="true"
-    android:layout_alignParentRight="true"
-    android:layout_alignParentEnd="true"/>
+        style="@style/Material.Widget.EditText"
+        android:id="@+id/add_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/blue"
+        android:textColorHint="@color/blue"
+        android:hint="Title"
+        android:textDirection="locale"
+        android:paddingTop="8dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
     <EditText
         style="@style/Material.Widget.EditText"
@@ -76,10 +71,10 @@
         android:hint="Comment"
         android:textDirection="locale"
         android:paddingTop="8dp"
-        android:layout_below="@+id/preview_image"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="88dp"/>
+        android:layout_marginTop="55dp"
+        android:layout_alignTop="@+id/add_title"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
 
 </RelativeLayout>

@@ -5,7 +5,7 @@
                 android:background="@drawable/background"
                 tools:context="com.example.android.pix.Activity.LogInActivity">
 
-    <TextView
+    <com.rey.material.widget.TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title"
@@ -13,11 +13,11 @@
         android:textSize="60sp"
         android:textColor="@android:color/white"
         android:textStyle="bold"
+        android:layout_marginTop="80dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="41dp"/>
+        android:layout_centerHorizontal="true"/>
 
-    <TextView
+    <com.rey.material.widget.TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/subtitle"
@@ -70,7 +70,7 @@
 
     </LinearLayout>
 
-    <Button
+    <com.rey.material.widget.Button
         android:id="@+id/loginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -79,12 +79,12 @@
         android:layout_below="@+id/editTextLayout"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:background="#00BCD4"
+        android:background="@color/actionButton"
         android:textColor="@android:color/white"
 
         />
 
-    <TextView
+    <com.rey.material.widget.TextView
         android:id="@+id/signUpText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -92,9 +92,9 @@
         android:textStyle="bold"
         android:textColor="@android:color/white"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="36dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_below="@+id/loginButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"/>
 
     <!--<com.twitter.sdk.android.core.identity.TwitterLoginButton-->
         <!--android:layout_width="wrap_content"-->

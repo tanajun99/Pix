@@ -41,7 +41,7 @@ public class EditMembersActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-        setContentView(R.layout.user_grid);
+        setContentView(R.layout.user_grid_edit);
         // Show the Up button in the action bar.
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.myawesometoolbar);
