@@ -1,8 +1,5 @@
 package com.example.android.pix;
 
-/**
- * Created by tanakajunnari on 5/9/15.
- */
 public final class ParseConstants {
     // Class name
     public static final String CLASS_MESSAGES = "Messages";

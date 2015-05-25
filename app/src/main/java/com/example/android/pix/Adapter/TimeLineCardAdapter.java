@@ -19,7 +19,7 @@ package com.example.android.pix.Adapter;
     import java.util.Date;
     import java.util.List;
 
-public class TimeLineCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class TimeLineCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  {
 
     protected Context mContext;
     protected List<ParseObject> mPosts;
@@ -28,7 +28,6 @@ public class TimeLineCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         mContext = context;
         mPosts = messages;
     }
-
 
     public TimeLineCardAdapter(List<ParseObject> contents) {
         this.mPosts = contents;

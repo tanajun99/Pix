@@ -50,7 +50,6 @@ public class UserCustomAdapter extends ArrayAdapter<ParseUser> {
 
         String email = user.getEmail().toLowerCase();
 
-
         if (email.equals("")) {
             holder.userImageView.setImageResource(R.mipmap.ic_person_grey600_48dp);
         } else{

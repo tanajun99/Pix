@@ -35,7 +35,6 @@ public class LogInActivity extends Activity {
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_log_in);
 
-
         mSignUpTextView = (TextView)findViewById(R.id.signUpText);
         mSignUpTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,16 +65,13 @@ public class LogInActivity extends Activity {
                     dialog.show();
                 }
                 else {
-                    // Login
                     setProgressBarIndeterminateVisibility(true);
-
                     ParseUser.logInInBackground(username, password, new LogInCallback() {
                         @Override
                         public void done(ParseUser user, ParseException e) {
                             setProgressBarIndeterminateVisibility(false);
 
                             if (e == null) {
-                                // Success!
                                 PixApplication.updateParseInstallation(user);
                                 Intent intent = new Intent(LogInActivity.this, MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -133,11 +129,9 @@ public class LogInActivity extends Activity {
         mTwitter.onActivityResult(requestCode, resultCode, data);
         //callbackManager.onActivityResult(requestCode, resultCode, data);
     }
-
     private void showMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
     }
-
 }

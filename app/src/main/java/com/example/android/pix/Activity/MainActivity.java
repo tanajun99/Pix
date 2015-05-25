@@ -45,22 +45,9 @@ import com.parse.ParseUser;
 
 public class MainActivity extends ActionBarActivity {
 
-
-    View indicator;
-    TabWidget tabWidget;
-
-    RecyclerView mRecyclerView;
-    RecyclerView.LayoutManager mLayoutManager;
-    RecyclerView.Adapter mAdapter;
-    private CharSequence mTitle;
     private MaterialViewPager mViewPager;
-    private DrawerLayout mDrawer;
-    private ActionBarDrawerToggle mDrawerToggle;
     private Toolbar toolbar;
     String postOrSend;
-
-
-
 
     public static final String TAG = MainActivity.class.getSimpleName();
 
@@ -72,8 +59,6 @@ public class MainActivity extends ActionBarActivity {
     public static final int MEDIA_TYPE_IMAGE = 4;
     public static final int MEDIA_TYPE_VIDEO = 5;
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
-
-
     public static final int FILE_SIZE_LIMIT = 1024*1024*10; // 10 MB
 
     protected Uri mMediaUri;
@@ -182,7 +167,6 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         mViewPager = (MaterialViewPager) findViewById(R.id.materialViewPager);
 
         toolbar = mViewPager.getToolbar();
@@ -251,7 +235,6 @@ public class MainActivity extends ActionBarActivity {
                         color = getResources().getColor(R.color.red);
                         break;
                 }
-
                 final int fadeDuration = 400;
                 //mViewPager.setImageUrl(imageUrl,fadeDuration);
                 //mViewPager.setColor(color,fadeDuration);
@@ -278,7 +261,6 @@ public class MainActivity extends ActionBarActivity {
         });
         mViewPager.getViewPager().setOffscreenPageLimit(mViewPager.getViewPager().getAdapter().getCount());
         mViewPager.getPagerTitleStrip().setViewPager(mViewPager.getViewPager());
-
         mViewPager.getViewPager().setCurrentItem(1);
 
         final FloatingActionButton fabSend = (FloatingActionButton)findViewById(R.id.menu_send);
@@ -333,13 +315,11 @@ public class MainActivity extends ActionBarActivity {
                 else {
                     mMediaUri = data.getData();
                 }
-
                 Log.i(TAG, "Media URI: " + mMediaUri);
                 if (requestCode == PICK_VIDEO_REQUEST) {
                     // make sure the file is less than 10 MB
                     int fileSize = 0;
                     InputStream inputStream = null;
-
                     try {
                         inputStream = getContentResolver().openInputStream(mMediaUri);
                         fileSize = inputStream.available();

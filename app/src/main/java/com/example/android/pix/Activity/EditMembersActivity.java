@@ -42,17 +42,13 @@ public class EditMembersActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.user_grid_edit);
-        // Show the Up button in the action bar.
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.myawesometoolbar);
         setActionBar(toolbar);
 
-
-
         mGridView = (GridView)findViewById(R.id.friendsGrid);
         mGridView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         mGridView.setOnItemClickListener(mOnItemClickListener);
-
         TextView emptyTextView = (TextView)findViewById(android.R.id.empty);
         mGridView.setEmptyView(emptyTextView);
     }
@@ -60,12 +56,9 @@ public class EditMembersActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-
         mCurrentUser = ParseUser.getCurrentUser();
         mFriendsRelation = mCurrentUser.getRelation(ParseConstants.KEY_FRIENDS_RELATION_SEND);
-
         setProgressBarIndeterminateVisibility(true);
-
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.orderByAscending(ParseConstants.KEY_USERNAME_SEND);
         query.setLimit(1000);
@@ -73,7 +66,6 @@ public class EditMembersActivity extends Activity {
             @Override
             public void done(List<ParseUser> users, ParseException e) {
                 setProgressBarIndeterminateVisibility(false);
-
                 if (e == null) {
                     // Success
                     mUsers = users;
@@ -107,14 +99,6 @@ public class EditMembersActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                // This ID represents the Home or Up button. In the case of this
-                // activity, the Up button is shown. Use NavUtils to allow users
-                // to navigate up one level in the application structure. For
-                // more details, see the Navigation pattern on Android Design:
-                //
-                // http://developer.android.com/design/patterns/navigation.html#up-vs-back
-                //
-                //NavUtils.navigateUpFromSameTask(this);
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -149,13 +133,11 @@ public class EditMembersActivity extends Activity {
             ImageView checkImageView = (ImageView)view.findViewById(R.id.user_image_checkmark);
 
             if (mGridView.isItemChecked(position)) {
-                // add the friend
                 mFriendsRelation.add(mUsers.get(position));
                 checkImageView.setVisibility(View.VISIBLE);
                 Toast.makeText(EditMembersActivity.this, R.string.edit_member_follow,Toast.LENGTH_LONG).show();
             }
             else {
-                // remove the friend
                 mFriendsRelation.remove(mUsers.get(position));
                 checkImageView.setVisibility(View.INVISIBLE);
                 Toast.makeText(EditMembersActivity.this, R.string.edit_member_unfollower,Toast.LENGTH_LONG).show();

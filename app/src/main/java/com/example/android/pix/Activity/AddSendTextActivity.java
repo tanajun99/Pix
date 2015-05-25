@@ -49,7 +49,6 @@ public class AddSendTextActivity extends ActionBarActivity {
         try {
             inputStream = getContentResolver().openInputStream(getUri);
             bitmap = BitmapFactory.decodeStream(inputStream, null, options);
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -57,20 +56,16 @@ public class AddSendTextActivity extends ActionBarActivity {
         if(bitmap != null){
             mPhoto.setImageBitmap(bitmap);
         }
-
         final String fleType = getIntent().getExtras().getString(ParseConstants.KEY_FILE_TYPE_SEND);
         getGetUri = getIntent().getData();
-
-
-
         mPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(mTitle==null){
-                    Toast.makeText(AddSendTextActivity.this, R.string.add_texts,Toast.LENGTH_LONG);
+                    Toast.makeText(AddSendTextActivity.this, R.string.add_texts,Toast.LENGTH_LONG).show();
                 }
                 else if (mComment==null){
-                    Toast.makeText(AddSendTextActivity.this, R.string.add_texts,Toast.LENGTH_LONG);
+                    Toast.makeText(AddSendTextActivity.this, R.string.add_texts,Toast.LENGTH_LONG).show();
 
                 }
                 else{

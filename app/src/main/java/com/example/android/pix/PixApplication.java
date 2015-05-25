@@ -14,7 +14,6 @@ import io.fabric.sdk.android.Fabric;
 
 public class PixApplication extends Application {
 
-    // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
     private static final String TWITTER_KEY = "j2GdKjcnqaIGlSwf8FYTUnMLM";
     private static final String TWITTER_SECRET = "DruaY9IZWepkWZt8s7quFH9twwFE7Nzpuq8txzwHEYw9NMyUhU";
 

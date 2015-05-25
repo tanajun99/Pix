@@ -1,6 +1,7 @@
 package com.example.android.pix.Activity;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -24,7 +25,6 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
-import com.rey.material.widget.Button;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -34,10 +34,9 @@ public class AddPostTextActivity extends ActionBarActivity {
     ImageView mPhoto;
     EditText mTitle;
     EditText mComment;
-    Button mPost;
-    Button mCancel;
     Uri getUri;
     Uri getGetUri;
+    ProgressDialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +45,11 @@ public class AddPostTextActivity extends ActionBarActivity {
 
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = false;
-        Bitmap bitmap=null;
+        Bitmap bitmap = null;
         InputStream inputStream = null;
-        mPhoto = (ImageView)findViewById(R.id.preview_image);
-        mTitle = (EditText)findViewById(R.id.add_title);
-        mComment = (EditText)findViewById(R.id.add_comment);
+        mPhoto = (ImageView) findViewById(R.id.preview_image);
+        mTitle = (EditText) findViewById(R.id.add_title);
+        mComment = (EditText) findViewById(R.id.add_comment);
         getUri = getIntent().getData();
 
         try {
@@ -61,35 +60,31 @@ public class AddPostTextActivity extends ActionBarActivity {
             e.printStackTrace();
         }
 
-        if(bitmap != null){
+        if (bitmap != null) {
             mPhoto.setImageBitmap(bitmap);
         }
 
         getGetUri = getIntent().getData();
 
-        final FloatingActionButton fabPost = (FloatingActionButton)findViewById(R.id.post_add_text);
+        final FloatingActionButton fabPost = (FloatingActionButton) findViewById(R.id.post_add_text);
         fabPost.setColorNormal(R.color.actionButton);
         fabPost.setColorNormalResId(R.color.actionButton);
         fabPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mTitle==null){
-                    Toast.makeText(AddPostTextActivity.this, R.string.add_texts, Toast.LENGTH_LONG);
-                }
-                else if (mComment==null){
-                    Toast.makeText(AddPostTextActivity.this, R.string.add_texts,Toast.LENGTH_LONG);
-
-                }
-                else{
+                open(v);
+                if (mTitle == null) {
+                    Toast.makeText(AddPostTextActivity.this, R.string.add_texts, Toast.LENGTH_LONG).show();
+                } else if (mComment == null) {
+                    Toast.makeText(AddPostTextActivity.this, R.string.add_texts, Toast.LENGTH_LONG).show();
+                } else {
                     ParseObject post = createPost();
                     post(post);
-                    Intent intent = new Intent(AddPostTextActivity.this, MainActivity.class);
-                    startActivity(intent);
                 }
             }
         });
 
-        final FloatingActionButton fabFriends = (FloatingActionButton)findViewById(R.id.cancel_add_text);
+        final FloatingActionButton fabFriends = (FloatingActionButton) findViewById(R.id.cancel_add_text);
         fabFriends.setColorNormal(R.color.actionButton);
         fabFriends.setColorNormalResId(R.color.actionButton);
         fabFriends.setOnClickListener(new View.OnClickListener() {
@@ -113,20 +108,18 @@ public class AddPostTextActivity extends ActionBarActivity {
         post.put(ParseConstants.KEY_POST_ID, ParseUser.getCurrentUser().getObjectId());
         post.put(ParseConstants.KEY_POST_NAME, ParseUser.getCurrentUser().getUsername());
         post.setACL(postACL);
-        post.put(ParseConstants.KEY_FILE_TYPE_POST,fleType);
-        post.put(ParseConstants.KEY_POST_TITLE,title);
+        post.put(ParseConstants.KEY_FILE_TYPE_POST, fleType);
+        post.put(ParseConstants.KEY_POST_TITLE, title);
         post.put(ParseConstants.KEY_POST_COMMENT, comment);
 
         byte[] fileBytes = FileManager.getByteArrayFromFile(this, getGetUri);
 
         if (fileBytes == null) {
             return null;
-        }
-        else {
+        } else {
             if (fleType.equals(ParseConstants.TYPE_IMAGE_SEND)) {
                 fileBytes = FileManager.reduceImageForUpload(fileBytes);
             }
-
             String fileName = FileManager.getFileName(this, getUri, fleType);
             ParseFile file = new ParseFile(fileName, fileBytes);
             post.put(ParseConstants.KEY_FILE_POST, file);
@@ -144,8 +137,7 @@ public class AddPostTextActivity extends ActionBarActivity {
                     Toast.makeText(AddPostTextActivity.this, R.string.success_message, Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(AddPostTextActivity.this, MainActivity.class);
                     startActivity(intent);
-                }
-                else {
+                } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(AddPostTextActivity.this);
                     builder.setMessage(R.string.error_sending_message)
                             .setTitle(R.string.error_selecting_file_title)
@@ -155,6 +147,35 @@ public class AddPostTextActivity extends ActionBarActivity {
                 }
             }
         });
+    }
+
+    public void open(View view) {
+        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setMessage("Posting photo　:)  ");
+        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        mProgressDialog.setIndeterminate(true);
+        mProgressDialog.show();
+
+        final int totalProgressTime = 100;
+
+        final Thread t = new Thread() {
+
+            @Override
+            public void run() {
+
+                int jumpTime = 0;
+                while (jumpTime < totalProgressTime) {
+                    try {
+                        sleep(200);
+                        jumpTime += 5;
+                        mProgressDialog.setProgress(jumpTime);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+        t.start();
     }
 }
 

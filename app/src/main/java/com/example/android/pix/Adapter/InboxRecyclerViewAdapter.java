@@ -16,17 +16,16 @@ import com.parse.ParseObject;
 import java.util.Date;
 import java.util.List;
 
-
 public class InboxRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     protected Context mContext;
     protected List<ParseObject> mMessages;
+    private RecyclerView mRecycler;
 
     public InboxRecyclerViewAdapter(Context context, List<ParseObject> messages) {
         mContext = context;
         mMessages = messages;
     }
-
 
     public InboxRecyclerViewAdapter(List<ParseObject> contents) {
         this.mMessages = contents;
@@ -44,10 +43,8 @@ public class InboxRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ViewHolder holder;
-
+        final ViewHolder holder;
         View view;
-
         view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item_card_small_inbox, parent, false);
         holder = new ViewHolder();
@@ -56,6 +53,7 @@ public class InboxRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
         holder.timeLabel = (TextView) view.findViewById(R.id.timeLabel);
         holder.titleLabel = (TextView)view.findViewById(R.id.titleLabel);
         holder.commentLabel = (TextView)view.findViewById(R.id.commentLabel);
+
         view.setTag(holder);
 
         ParseObject message = mMessages.get(viewType);
@@ -86,7 +84,7 @@ public class InboxRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
 
     }
 
-    private static class ViewHolder{
+    public static class ViewHolder{
         ImageView iconImageView;
         TextView nameLabel;
         TextView timeLabel;
@@ -99,6 +97,4 @@ public class InboxRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
         mMessages.addAll(messages);
         notifyDataSetChanged();
     }
-
-
 }

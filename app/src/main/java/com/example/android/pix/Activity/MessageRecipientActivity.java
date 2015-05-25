@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -50,26 +51,21 @@ public class MessageRecipientActivity extends Activity {
     protected String mTitle;
     protected String mComment;
     GridView mGridView;
+    ProgressDialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.user_grid_recip);
 
-//        mViewPager = (MaterialViewPager) findViewById(R.id.materialViewPager);
-//
-//
         Toolbar toolbar = (Toolbar) findViewById(R.id.myawesometoolbar);
         setActionBar(toolbar);
 
-
-
-        mGridView = (GridView)findViewById(R.id.friendsGrid);
+        mGridView = (GridView) findViewById(R.id.friendsGrid);
         mGridView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         mGridView.setOnItemClickListener(mOnItemClickListener);
 
-        TextView emptyTextView = (TextView)findViewById(android.R.id.empty);
+        TextView emptyTextView = (TextView) findViewById(android.R.id.empty);
         mGridView.setEmptyView(emptyTextView);
         Intent intent = getIntent();
         mMediaUri = intent.getData();
@@ -79,13 +75,14 @@ public class MessageRecipientActivity extends Activity {
         Log.d(ParseConstants.KEY_SEND_TITLE, mTitle);
         Log.d(ParseConstants.KEY_SEND_COMMENT, mComment);
 
-        final FloatingActionButton fabSend = (FloatingActionButton)findViewById(R.id.send_add_text);
+        final FloatingActionButton fabSend = (FloatingActionButton) findViewById(R.id.send_add_text);
         fabSend.setColorNormal(R.color.actionButton);
         fabSend.setColorNormalResId(R.color.actionButton);
         fabSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ParseObject message = createMessage();
+                open(v);
                 if (message == null) {
                     // error
                     AlertDialog.Builder builder = new AlertDialog.Builder(MessageRecipientActivity.this);
@@ -94,15 +91,14 @@ public class MessageRecipientActivity extends Activity {
                             .setPositiveButton(android.R.string.ok, null);
                     AlertDialog dialog = builder.create();
                     dialog.show();
-                }
-                else {
+                } else {
                     send(message);
                     finish();
                 }
             }
         });
 
-        final FloatingActionButton fabFriends = (FloatingActionButton)findViewById(R.id.cancel_add_text);
+        final FloatingActionButton fabFriends = (FloatingActionButton) findViewById(R.id.cancel_add_text);
         fabFriends.setColorNormal(R.color.actionButton);
         fabFriends.setColorNormalResId(R.color.actionButton);
         fabFriends.setOnClickListener(new View.OnClickListener() {
@@ -120,7 +116,6 @@ public class MessageRecipientActivity extends Activity {
 
         mCurrentUser = ParseUser.getCurrentUser();
         mFriendsRelation = mCurrentUser.getRelation(ParseConstants.KEY_FRIENDS_RELATION_SEND);
-
         setProgressBarIndeterminateVisibility(true);
 
         ParseQuery<ParseUser> query = mFriendsRelation.getQuery();
@@ -129,10 +124,8 @@ public class MessageRecipientActivity extends Activity {
             @Override
             public void done(List<ParseUser> friends, ParseException e) {
                 setProgressBarIndeterminateVisibility(false);
-
                 if (e == null) {
                     mFriends = friends;
-
                     String[] usernames = new String[mFriends.size()];
                     int i = 0;
                     for (ParseUser user : mFriends) {
@@ -164,15 +157,14 @@ public class MessageRecipientActivity extends Activity {
         message.put(ParseConstants.KEY_SENDER_NAME, ParseUser.getCurrentUser().getUsername());
         message.put(ParseConstants.KEY_RECIPIENT_IDS, getRecipientIds());
         message.put(ParseConstants.KEY_FILE_TYPE_SEND, mFileType);
-        message.put(ParseConstants.KEY_SEND_TITLE,mTitle);
-        message.put(ParseConstants.KEY_SEND_COMMENT,mComment);
+        message.put(ParseConstants.KEY_SEND_TITLE, mTitle);
+        message.put(ParseConstants.KEY_SEND_COMMENT, mComment);
 
         byte[] fileBytes = FileManager.getByteArrayFromFile(this, mMediaUri);
 
         if (fileBytes == null) {
             return null;
-        }
-        else {
+        } else {
             if (mFileType.equals(ParseConstants.TYPE_IMAGE_SEND)) {
                 fileBytes = FileManager.reduceImageForUpload(fileBytes);
             }
@@ -200,13 +192,11 @@ public class MessageRecipientActivity extends Activity {
             @Override
             public void done(ParseException e) {
                 if (e == null) {
-                    // success!
                     Toast.makeText(MessageRecipientActivity.this, R.string.success_message, Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(MessageRecipientActivity.this, MainActivity.class);
                     sendPushNotifications();
                     startActivity(intent);
-                }
-                else {
+                } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(MessageRecipientActivity.this);
                     builder.setMessage(R.string.error_sending_message)
                             .setTitle(R.string.error_selecting_file_title)
@@ -220,38 +210,53 @@ public class MessageRecipientActivity extends Activity {
 
     protected void sendPushNotifications() {
         ParseQuery<ParseInstallation> query = ParseInstallation.getQuery();
-        query.whereContainedIn(ParseConstants.KEY_USER_ID_SEND,getRecipientIds());
+        query.whereContainedIn(ParseConstants.KEY_USER_ID_SEND, getRecipientIds());
 
         ParsePush push = new ParsePush();
         push.setQuery(query);
-        push.setMessage(getString(R.string.push_message,ParseUser.getCurrentUser().getUsername()));
+        push.setMessage(getString(R.string.push_message, ParseUser.getCurrentUser().getUsername()));
         push.sendInBackground();
     }
 
     protected AdapterView.OnItemClickListener mOnItemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            if (mGridView.getCheckedItemCount() > 0) {
-                mSendMenuItem.setVisible(true);
-            }
-            else {
-                mSendMenuItem.setVisible(false);
-            }
-
-            ImageView checkImageView = (ImageView)view.findViewById(R.id.user_image_checkmark);
-
+            ImageView checkImageView = (ImageView) view.findViewById(R.id.user_image_checkmark);
             if (mGridView.isItemChecked(position)) {
                 checkImageView.setVisibility(View.VISIBLE);
-            }
-            else {
+            } else {
                 checkImageView.setVisibility(View.INVISIBLE);
-
             }
         }
-
-
-
     };
+
+    public void open(View view) {
+        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setMessage("Sending photo　:)  ");
+        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        mProgressDialog.setIndeterminate(true);
+        mProgressDialog.show();
+
+        final int totalProgressTime = 100;
+
+        final Thread t = new Thread() {
+
+            @Override
+            public void run() {
+                int jumpTime = 0;
+                while (jumpTime < totalProgressTime) {
+                    try {
+                        sleep(200);
+                        jumpTime += 5;
+                        mProgressDialog.setProgress(jumpTime);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+        t.start();
+    }
 }
 
 

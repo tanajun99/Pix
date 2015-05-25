@@ -17,8 +17,6 @@ import android.util.Log;
 
 import org.apache.commons.io.IOUtils;
 
-//import org.apache.commons.io.IOUtils;
-
 public class FileManager {
 
     public static final String TAG = FileManager.class.getSimpleName();
@@ -79,7 +77,6 @@ public class FileManager {
             outputStream.close();
         }
         catch (IOException e) {
-            // Intentionally blank
         }
 
         return reducedData;
@@ -92,9 +89,7 @@ public class FileManager {
             fileName += "png";
         }
         else {
-            // For video, we want to get the actual file extension
             if (uri.getScheme().equals("content")) {
-                // do it using the mime type
                 String mimeType = context.getContentResolver().getType(uri);
                 int slashIndex = mimeType.indexOf("/");
                 String fileExtension = mimeType.substring(slashIndex + 1);
@@ -104,7 +99,6 @@ public class FileManager {
                 fileName = uri.getLastPathSegment();
             }
         }
-
         return fileName;
     }
 }

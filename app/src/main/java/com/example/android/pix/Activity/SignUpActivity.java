@@ -30,23 +30,18 @@ public class SignUpActivity extends Activity {
     protected EditText mEmail;
     protected Button mSignUpButton;
     protected Button mCancelButton;
-    //LoginButton mFaceBook;
     Dialog progressDialog;
     TwitterLoginButton mTwitter;
-    //CallbackManager callbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_sign_up);
-        //FacebookSdk.sdkInitialize(getApplicationContext());
-        //callbackManager = CallbackManager.Factory.create();
 
         mUsername = (EditText)findViewById(R.id.usernameField);
         mPassword = (EditText)findViewById(R.id.passwordField);
         mEmail = (EditText)findViewById(R.id.emailField);
-
         mCancelButton = (Button)findViewById(R.id.cancel_buttom);
         mCancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,8 +49,6 @@ public class SignUpActivity extends Activity {
                 finish();
             }
         });
-
-
         mSignUpButton = (Button)findViewById(R.id.signupButton);
         mSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override

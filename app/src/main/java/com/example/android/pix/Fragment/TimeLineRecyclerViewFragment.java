@@ -33,7 +33,6 @@ public class TimeLineRecyclerViewFragment extends Fragment {
     protected List<ParseObject> mPosts;
     protected SwipeRefreshLayout mSwipeRefreshLayout;
 
-
     public static TimeLineRecyclerViewFragment newInstance() {
         return new TimeLineRecyclerViewFragment();
     }
@@ -51,14 +50,12 @@ public class TimeLineRecyclerViewFragment extends Fragment {
                 R.color.Refresh4
         );
         return rootView;
-
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-
 
         timeLine();
 
