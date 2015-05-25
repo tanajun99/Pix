@@ -49,15 +49,10 @@
     <string name="error_sending_message">There was an error sending your message. Please try again.</string>
     <string name="title_activity_view_image">Pix</string>
     <string name="title_activity_viewer_photo">ViewerPhotoActivity</string>
-<<<<<<< HEAD
     <string name="title_activity_message_recipient">Choose Friends</string>
     <string name="title_activity_edit_members">Users</string>
-=======
-    <string name="title_activity_message_recipient">MessageRecipientActivity</string>
-    <string name="title_activity_edit_members">EditMemberActivity</string>
     <string name="title_activity_main_activity2">MainActivity2Activity</string>
     <string name="title_section3">TIMELINE</string>
->>>>>>> 63cd4984ff0c30129acc8149525bafd03fe4d9cf
     <string name="title">Pix</string>
     <string name="subtitle">Share Photo by material design</string>
     <string name="sign_up_buuton_cancel">CANCEL</string>
@@ -65,7 +60,6 @@
     <string name="content_desc_user_icon">user_icon</string>
     <string name="content_desc_user_checkmark">User Checkmark</string>
     <string name="push_message">You have a new Pix message from</string>
-<<<<<<< HEAD
     <string name="title_activity_time_line">TimeLineActivity</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -78,11 +72,9 @@
     <string name="title_activity_add_text">AddTextActivity</string>
     <string name="add_texts">Oops!, fill out both comment and title.</string>
     <string name="title_activity_add_text_post">AddPostTextActivity</string>
-=======
     <string name="time_line_activity">TimeLineActivity</string>
     <plurals name="likes_count">
         <item quantity="one">%d like</item>
         <item quantity="other">%d likes</item>
     </plurals>
->>>>>>> 63cd4984ff0c30129acc8149525bafd03fe4d9cf
 </resources>
