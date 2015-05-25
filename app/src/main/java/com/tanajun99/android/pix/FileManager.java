@@ -1,4 +1,4 @@
-package com.example.android.pix;
+package com.tanajun99.android.pix;
 
 /**
  * Created by tanakajunnari on 5/9/15.

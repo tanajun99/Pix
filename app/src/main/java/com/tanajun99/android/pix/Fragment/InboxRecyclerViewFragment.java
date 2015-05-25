@@ -1,4 +1,4 @@
-package com.example.android.pix.Fragment;
+package com.tanajun99.android.pix.Fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,18 +6,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.android.pix.Activity.MainActivity;
-import com.example.android.pix.Adapter.InboxRecyclerViewAdapter;
-import com.example.android.pix.ParseConstants;
-import com.example.android.pix.R;
+import com.tanajun99.android.pix.Adapter.InboxRecyclerViewAdapter;
+import com.tanajun99.android.pix.ParseConstants;
 import com.github.florent37.materialviewpager.MaterialViewPagerHelper;
 import com.github.florent37.materialviewpager.adapter.RecyclerViewMaterialAdapter;
 import com.parse.FindCallback;
@@ -25,7 +20,7 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
+import com.tanajun99.android.pix.R;
 
 import java.util.List;
 

@@ -3,7 +3,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/background"
-                tools:context="com.example.android.pix.Activity.LogInActivity">
+                tools:context="com.tanajun99.android.pix.Activity.LogInActivity">
 
     <com.rey.material.widget.TextView
         android:layout_width="wrap_content"

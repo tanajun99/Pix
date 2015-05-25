@@ -1,4 +1,4 @@
-package com.example.android.pix.Activity;
+package com.tanajun99.android.pix.Activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -12,9 +12,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.android.pix.ParseConstants;
-import com.example.android.pix.R;
+import com.tanajun99.android.pix.ParseConstants;
 import com.rey.material.widget.Button;
+import com.tanajun99.android.pix.R;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;

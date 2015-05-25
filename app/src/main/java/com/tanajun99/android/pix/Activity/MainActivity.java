@@ -1,4 +1,4 @@
-package com.example.android.pix.Activity;
+package com.tanajun99.android.pix.Activity;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,10 +9,8 @@ import java.util.Locale;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.View;
-import android.widget.TabWidget;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,20 +25,19 @@ import android.view.MenuItem;
 import android.widget.Toast;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.ViewGroup;
 
-import com.example.android.pix.Fragment.InboxRecyclerViewFragment;
-import com.example.android.pix.Fragment.MembersFragment;
-import com.example.android.pix.Fragment.TimeLineRecyclerViewFragment;
-import com.example.android.pix.ParseConstants;
-import com.example.android.pix.R;
+import com.tanajun99.android.pix.Fragment.InboxRecyclerViewFragment;
+import com.tanajun99.android.pix.Fragment.MembersFragment;
+import com.tanajun99.android.pix.Fragment.TimeLineRecyclerViewFragment;
+import com.tanajun99.android.pix.ParseConstants;
+
 import com.github.clans.fab.FloatingActionButton;
 import com.github.florent37.materialviewpager.MaterialViewPager;
 import com.parse.ParseUser;
+import com.tanajun99.android.pix.R;
 
 
 public class MainActivity extends ActionBarActivity {

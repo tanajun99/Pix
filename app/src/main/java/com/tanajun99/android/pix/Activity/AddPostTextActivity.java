@@ -1,4 +1,4 @@
-package com.example.android.pix.Activity;
+package com.tanajun99.android.pix.Activity;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -15,9 +15,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.android.pix.FileManager;
-import com.example.android.pix.ParseConstants;
-import com.example.android.pix.R;
+import com.tanajun99.android.pix.FileManager;
+import com.tanajun99.android.pix.ParseConstants;
+
 import com.github.clans.fab.FloatingActionButton;
 import com.parse.ParseACL;
 import com.parse.ParseException;
@@ -25,6 +25,7 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+import com.tanajun99.android.pix.R;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -66,7 +67,8 @@ public class AddPostTextActivity extends ActionBarActivity {
 
         getGetUri = getIntent().getData();
 
-        final FloatingActionButton fabPost = (FloatingActionButton) findViewById(R.id.post_add_text);
+        final FloatingActionButton fabPost = (FloatingActionButton) findViewById(
+                R.id.post_add_text);
         fabPost.setColorNormal(R.color.actionButton);
         fabPost.setColorNormalResId(R.color.actionButton);
         fabPost.setOnClickListener(new View.OnClickListener() {

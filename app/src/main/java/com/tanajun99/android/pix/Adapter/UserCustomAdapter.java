@@ -1,4 +1,4 @@
-package com.example.android.pix.Adapter;
+package com.tanajun99.android.pix.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,11 +9,10 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.android.pix.MD5Utils;
-import com.example.android.pix.R;
-import com.parse.ParseACL;
+import com.tanajun99.android.pix.MD5Utils;
 import com.parse.ParseUser;
 import com.squareup.picasso.Picasso;
+import com.tanajun99.android.pix.R;
 
 import java.util.List;
 

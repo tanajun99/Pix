@@ -8,7 +8,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_section1">Inbox</string>
     <string name="title_section2">Friends</string>
-    <string name="title_activity_log_in">Log in</string>
+    <string name="title_activity_log_in">Pix</string>
     <string name="username_hint">Username</string>
     <string name="password_hint">Password</string>
     <string name="login_button_label">SIGN IN</string>
@@ -52,7 +52,7 @@
     <string name="title_activity_message_recipient">Choose Friends</string>
     <string name="title_activity_edit_members">Users</string>
     <string name="title">Pix</string>
-    <string name="subtitle">Useful Messaging Service</string>
+    <string name="subtitle">Share Photo by material design</string>
     <string name="sign_up_buuton_cancel">CANCEL</string>
     <string name="content_desc_message_icon">Message Icon</string>
     <string name="content_desc_user_icon">user_icon</string>

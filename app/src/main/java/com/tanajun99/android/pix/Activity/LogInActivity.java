@@ -1,4 +1,4 @@
-package com.example.android.pix.Activity;
+package com.tanajun99.android.pix.Activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -10,8 +10,7 @@ import android.view.Window;
 import android.widget.EditText;
 
 
-import com.example.android.pix.PixApplication;
-import com.example.android.pix.R;
+import com.tanajun99.android.pix.PixApplication;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseTwitterUtils;
@@ -19,6 +18,7 @@ import com.parse.ParseUser;
 
 import com.rey.material.widget.Button;
 import com.rey.material.widget.TextView;
+import com.tanajun99.android.pix.R;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
 public class LogInActivity extends Activity {

@@ -1,4 +1,4 @@
-package com.example.android.pix.Adapter;
+package com.tanajun99.android.pix.Adapter;
 
     import android.content.Context;
     import android.net.Uri;
@@ -10,11 +10,12 @@ package com.example.android.pix.Adapter;
     import android.widget.ImageView;
     import android.widget.TextView;
 
-    import com.example.android.pix.ParseConstants;
-    import com.example.android.pix.R;
+    import com.tanajun99.android.pix.ParseConstants;
+
     import com.parse.ParseFile;
     import com.parse.ParseObject;
     import com.squareup.picasso.Picasso;
+    import com.tanajun99.android.pix.R;
 
     import java.util.Date;
     import java.util.List;

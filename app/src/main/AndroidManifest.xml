@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.android.pix" >
+    package="com.tanajun99.android.pix" >
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -23,15 +23,16 @@
         android:required="true" />
 
     <permission
-        android:name="com.example.android.pix.permission.C2D_MESSAGE"
+        android:name="com.tanajun99.android.pix.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.example.android.pix.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.tanajun99.android.pix.permission.C2D_MESSAGE" />
 
     <android:uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
-    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission
+        android:name="android.permission.READ_PHONE_STATE" />
     <android:uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />

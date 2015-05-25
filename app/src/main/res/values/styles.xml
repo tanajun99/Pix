@@ -5,12 +5,14 @@
 
     <style name="AppTheme" parent="AppBaseTheme">
 
-        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorPrimary">#00BCD4</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
         <item name="android:windowTranslucentStatus" tools:targetApi="21">true</item>
 
         <item name="android:windowContentOverlay">@null</item>
         <item name="windowActionBar">false</item>
+        <item name="android:textColorSecondary">#00BCD4</item>
+
 
         <!-- Toolbar Theme / Apply white arrow -->
         <item name="colorControlNormal">#00BCD4</item>

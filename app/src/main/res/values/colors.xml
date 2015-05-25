@@ -9,11 +9,10 @@
     <color name="colorPrimaryDark">@color/blue</color>
     <color name="statusBarColor">@color/blue</color>
     <color name="navigationBarColor">@android:color/black</color>
-    <color name="drawerArrowColor">@android:color/white</color>
+    <color name="drawerArrowColor">#00838F</color>
     <color name="light_gray">#bbbbbb</color>
     <color name="Refresh1">#3F51B5</color>
     <color name="Refresh2">#5677fc</color>
     <color name="Refresh3">#738ffe</color>
     <color name="Refresh4">#91a7ff</color>
-    <color name="floatingbuttonMenu">#B2EBF2</color>
 </resources>

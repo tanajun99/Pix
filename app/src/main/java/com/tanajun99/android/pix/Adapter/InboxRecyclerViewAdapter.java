@@ -1,4 +1,4 @@
-package com.example.android.pix.Adapter;
+package com.tanajun99.android.pix.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.android.pix.ParseConstants;
-import com.example.android.pix.R;
+import com.tanajun99.android.pix.ParseConstants;
 import com.parse.ParseObject;
+import com.tanajun99.android.pix.R;
 
 import java.util.Date;
 import java.util.List;

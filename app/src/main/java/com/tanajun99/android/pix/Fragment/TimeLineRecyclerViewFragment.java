@@ -1,4 +1,4 @@
-package com.example.android.pix.Fragment;
+package com.tanajun99.android.pix.Fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,19 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.android.pix.Adapter.InboxRecyclerViewAdapter;
-import com.example.android.pix.Adapter.TimeLineCardAdapter;
-import com.example.android.pix.ParseConstants;
-import com.example.android.pix.R;
+import com.tanajun99.android.pix.Adapter.TimeLineCardAdapter;
+import com.tanajun99.android.pix.ParseConstants;
 import com.github.florent37.materialviewpager.MaterialViewPagerHelper;
 import com.github.florent37.materialviewpager.adapter.RecyclerViewMaterialAdapter;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.parse.ParseUser;
+import com.tanajun99.android.pix.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 

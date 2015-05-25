@@ -1,4 +1,4 @@
-package com.example.android.pix;
+package com.tanajun99.android.pix;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

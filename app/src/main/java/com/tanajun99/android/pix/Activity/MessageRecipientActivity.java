@@ -1,4 +1,4 @@
-package com.example.android.pix.Activity;
+package com.tanajun99.android.pix.Activity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +9,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,10 +20,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
-import com.example.android.pix.FileManager;
-import com.example.android.pix.ParseConstants;
-import com.example.android.pix.R;
-import com.example.android.pix.Adapter.UserCustomAdapter;
+import com.tanajun99.android.pix.FileManager;
+import com.tanajun99.android.pix.ParseConstants;
+import com.tanajun99.android.pix.Adapter.UserCustomAdapter;
 import com.github.clans.fab.FloatingActionButton;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -37,6 +34,7 @@ import com.parse.ParseQuery;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+import com.tanajun99.android.pix.R;
 
 public class MessageRecipientActivity extends Activity {
 

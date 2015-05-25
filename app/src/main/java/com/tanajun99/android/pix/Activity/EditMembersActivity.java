@@ -1,4 +1,4 @@
-package com.example.android.pix.Activity;
+package com.tanajun99.android.pix.Activity;
 
 import java.util.List;
 
@@ -17,15 +17,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
-import com.example.android.pix.ParseConstants;
-import com.example.android.pix.R;
-import com.example.android.pix.Adapter.UserCustomAdapter;
+import com.tanajun99.android.pix.ParseConstants;
+import com.tanajun99.android.pix.Adapter.UserCustomAdapter;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+import com.tanajun99.android.pix.R;
 
 public class EditMembersActivity extends Activity {
 

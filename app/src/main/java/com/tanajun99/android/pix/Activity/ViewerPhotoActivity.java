@@ -1,4 +1,4 @@
-package com.example.android.pix.Activity;
+package com.tanajun99.android.pix.Activity;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -10,8 +10,8 @@ import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
-import com.example.android.pix.R;
 import com.squareup.picasso.Picasso;
+import com.tanajun99.android.pix.R;
 
 public class ViewerPhotoActivity extends Activity {
 
