@@ -73,6 +73,7 @@
     <string name="add_texts">Oops!, fill out both comment and title.</string>
     <string name="title_activity_add_text_post">AddPostTextActivity</string>
     <string name="time_line_activity">TimeLineActivity</string>
+    <string name="success_post">Done!</string>
     <plurals name="likes_count">
         <item quantity="one">%d like</item>
         <item quantity="other">%d likes</item>

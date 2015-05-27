@@ -136,7 +136,7 @@ public class AddPostTextActivity extends ActionBarActivity {
             public void done(ParseException e) {
                 if (e == null) {
                     // success!
-                    Toast.makeText(AddPostTextActivity.this, R.string.success_message, Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddPostTextActivity.this, R.string.success_post, Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(AddPostTextActivity.this, MainActivity.class);
                     startActivity(intent);
                 } else {
