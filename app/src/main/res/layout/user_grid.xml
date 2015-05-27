@@ -5,14 +5,6 @@
              tools:context="com.tanajun99.android.pix.Fragment.MembersFragment"
              android:background="@color/blue">
 
-    <android.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/blue"
-        android:id="@+id/myawesometoolbar">
-
-    </android.widget.Toolbar>
-
     <GridView
         android:id="@+id/friendsGrid"
         android:layout_width="match_parent"
