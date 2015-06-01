@@ -22,9 +22,9 @@ public class PixApplication extends Application {
         super.onCreate();
         TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
         Fabric.with(this, new Twitter(authConfig), new Crashlytics());
-        Parse.initialize(this, "", "");
+        Parse.initialize(this, "Key", "Key");
         ParseInstallation.getCurrentInstallation().saveInBackground();
-        ParseTwitterUtils.initialize("", "");
+        ParseTwitterUtils.initialize("TwitterKey", "TwitterKey");
         ParseFacebookUtils.initialize(this);
         ParseUser.enableAutomaticUser();
         ParseUser.getCurrentUser().increment("RunCount");
