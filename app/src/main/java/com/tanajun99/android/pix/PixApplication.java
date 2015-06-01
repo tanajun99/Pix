@@ -14,17 +14,17 @@ import io.fabric.sdk.android.Fabric;
 
 public class PixApplication extends Application {
 
-    private static final String TWITTER_KEY = "j2GdKjcnqaIGlSwf8FYTUnMLM";
-    private static final String TWITTER_SECRET = "DruaY9IZWepkWZt8s7quFH9twwFE7Nzpuq8txzwHEYw9NMyUhU";
+    private static final String TWITTER_KEY = "";
+    private static final String TWITTER_SECRET = "";
 
     @Override
     public void onCreate() {
         super.onCreate();
         TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
         Fabric.with(this, new Twitter(authConfig), new Crashlytics());
-        Parse.initialize(this, "McMcH2r1mHPLVayThixzxqiVQUesUOUYIoDLXVIp", "5T8YLuCG3uU8p98BteGHRnysKT0Z2Hd1NlTPRhsa");
+        Parse.initialize(this, "", "");
         ParseInstallation.getCurrentInstallation().saveInBackground();
-        ParseTwitterUtils.initialize("j2GdKjcnqaIGlSwf8FYTUnMLM", "DruaY9IZWepkWZt8s7quFH9twwFE7Nzpuq8txzwHEYw9NMyUhU");
+        ParseTwitterUtils.initialize("", "");
         ParseFacebookUtils.initialize(this);
         ParseUser.enableAutomaticUser();
         ParseUser.getCurrentUser().increment("RunCount");
